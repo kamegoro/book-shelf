@@ -1,4 +1,4 @@
-import MuiTypography, { TypographyProps } from "@mui/material/Typography";
+import MuiTypography, { TypographyProps } from '@mui/material/Typography';
 
 export type TypographyPropsType = TypographyProps;
 
