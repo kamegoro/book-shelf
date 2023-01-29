@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup repository
-        uses: ./github/actions/setup_repository.yaml
+        uses: ./.github/actions/setup_repository.yaml
 
       - name: Execute command
         run: ${{ inputs.command }}

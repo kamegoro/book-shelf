@@ -9,12 +9,12 @@ permissions:
   contents: "read"
 
 jobs:
-  - name: run_build
+  run_build:
     uses: "./.github/workflows/excute_pnpm_command.yaml"
     with:
       command: "pnpm run build"
 
-  - name: run_lint
+  run_lint:
     uses: "./.github/workflows/excute_pnpm_command.yaml"
     with:
       command: "pnpm run lint"
