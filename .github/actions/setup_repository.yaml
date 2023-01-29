@@ -4,19 +4,14 @@ runs:
   using: "composite"
 
   steps:
-    - uses: pnpm/action-setup@v2.2.4
+    - name: Setup node
+      uses: actions/setup-node@3
+      with:
+        node-version: 18
 
-    - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
-      id: pnpm-config
+    - name: Put node version
       shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-    - name: Cache rotation keys
-      id: cache-rotation
-      shell: bash
-      run: |
-        echo "YEAR_MONTH=$(/bin/date -u "+%Y%m")" >> $GITHUB_OUTPUT
+      run: echo "The version of Node.js used is $(node -v)"
 
     - uses: actions/cache@v3
       name: Setup pnpm cache
