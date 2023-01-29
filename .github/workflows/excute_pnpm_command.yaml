@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout node
-        user: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Setup repository
         uses: ./github/actions/setup_repository.yaml
