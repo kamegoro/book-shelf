@@ -10,7 +10,7 @@ on:
 permissions:
   contents: "read"
 
-job:
+jobs:
   execute_pnpm_command:
     timeout-minutes: 10
 
