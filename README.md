@@ -1,38 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Book Shelf
 
-## Getting Started
+個別に本を登録できるアプリケーション
 
-First, run the development server:
+### 技術スタック
+
+（2023/02/01 現在）
+
+- Next.js
+- TypeScript
+- Node.js
+- Mui（Mui-icon）
+
+### 開発セットアップ
+
+パッケージマネージャは[pnpm](https://pnpm.io/ja/installation)を採用
+下記のコマンドで`node_modules`をインストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm i
+```
+
+[localhost:3000](http://localhost:3000)を立ち上げる
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### ブランチの切り方
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- 基本的には`main`ブランチから切るが、規模が大きくなる場合や作業が重複する場合のみ子ブランチから切っても良い。
+- ブランチ名は`feature/×××`または`feat/×××`に統一
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### PR の運用
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `main`ブランチにマージする時のみ自分を除く１名の`Approved`が必須
+  Free プランなので各自でマージ出来てしまいますが、極力避けてください）
+- `main`ブランチへの直 Push は禁止
+- `Approved`後は PR 作成者がマージしてください
