@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prisma": "npx prisma studio",
+    "prisma:studio": "npx prisma studio",
+    "prisma:generate": "npx prisma generate",
     "lint": "next lint",
     "prettier": "prettier --write src"
   },
@@ -27,9 +28,11 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "9.3.0",
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
     "prettier": "2.8.3",
     "prisma": "4.9.0",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6"
+    "prisma-erd-generator": "1.2.5"
   }
 }
