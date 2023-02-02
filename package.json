@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prisma": "npx prisma studio",
     "lint": "next lint",
     "prettier": "prettier --write src"
   },
