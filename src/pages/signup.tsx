@@ -17,28 +17,28 @@ const TextFieldWithIcon = memo(
       TextFieldPropsType,
       'label' | 'placeholder' | 'error' | 'helperText' | 'value' | 'onChange' | 'type'
     > & {
+      // NOTE: 呼びだれているのにも関わらずlint errorを返されるので仕方なしに
+      // eslint-disable-next-line react/no-unused-prop-types
       icon: ReactNode;
     }
-  >(({ label, placeholder, icon, value, type, onChange }, ref) => {
-    return (
-      <TextField
-        ref={ref}
-        sx={{ mb: 3 }}
-        label={label}
-        required
-        placeholder={placeholder}
-        InputProps={{
-          startAdornment: icon,
-          sx: {
-            fontSize: 14,
-          },
-        }}
-        value={value}
-        onChange={onChange}
-        type={type}
-      />
-    );
-  }),
+  >(({ label, placeholder, icon, value, type, onChange }, ref) => (
+    <TextField
+      ref={ref}
+      sx={{ mb: 3 }}
+      label={label}
+      required
+      placeholder={placeholder}
+      InputProps={{
+        startAdornment: icon,
+        sx: {
+          fontSize: 14,
+        },
+      }}
+      value={value}
+      onChange={onChange}
+      type={type}
+    />
+  )),
 );
 
 type InputProps = {
@@ -46,8 +46,8 @@ type InputProps = {
   email: string;
 };
 
-const signUp = () => {
-  const { control, handleSubmit, register } = useForm<InputProps>({
+const SignUp = () => {
+  const { control, handleSubmit } = useForm<InputProps>({
     defaultValues: {
       name: '',
       email: '',
@@ -105,9 +105,7 @@ const signUp = () => {
                 label="ユーザー名"
                 placeholder="ユーザー名を入力してください"
                 icon={
-                  <>
-                    <PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
-                  </>
+                  <PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
                 }
               />
             )}
@@ -122,11 +120,9 @@ const signUp = () => {
                 placeholder="メールを入力してください"
                 type="email"
                 icon={
-                  <>
-                    <MailOutlineIcon
-                      sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }}
-                    />
-                  </>
+                  <MailOutlineIcon
+                    sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }}
+                  />
                 }
               />
             )}
@@ -144,4 +140,4 @@ const signUp = () => {
   );
 };
 
-export default signUp;
+export default SignUp;
