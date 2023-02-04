@@ -11,9 +11,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 // TODO: 調査・修正予定
 import { Stack } from '@mui/material';
 
-import { memo, forwardRef } from 'react';
-
-import { ReactNode } from 'react';
+import { memo, forwardRef, ReactNode } from 'react';
 
 const TextFieldWithIcon = memo(
   forwardRef<
@@ -24,7 +22,7 @@ const TextFieldWithIcon = memo(
     > & {
       icon: ReactNode;
     }
-  >(({ label, placeholder, icon, error, helperText, value, type, onChange }, ref) => {
+  >(({ label, placeholder, icon, value, type, onChange }, ref) => {
     return (
       <TextField
         ref={ref}
@@ -38,8 +36,6 @@ const TextFieldWithIcon = memo(
             fontSize: 14,
           },
         }}
-        error={error}
-        helperText={helperText}
         value={value}
         onChange={onChange}
         type={type}
@@ -54,7 +50,12 @@ type InputProps = {
 };
 
 const signUp = () => {
-  const { control, handleSubmit, register } = useForm<InputProps>();
+  const { control, handleSubmit, register } = useForm<InputProps>({
+    defaultValues: {
+      name: '',
+      email: '',
+    },
+  });
 
   const onSubmit: SubmitHandler<InputProps> = (data) => {
     console.log(data);
@@ -101,8 +102,9 @@ const signUp = () => {
           <Controller
             name="name"
             control={control}
-            render={() => (
+            render={({ field }) => (
               <TextFieldWithIcon
+                {...field}
                 label="ユーザー名"
                 placeholder="ユーザー名を入力してください"
                 icon={
@@ -110,15 +112,15 @@ const signUp = () => {
                     <PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
                   </>
                 }
-                {...register('name')}
               />
             )}
           />
           <Controller
             name="email"
             control={control}
-            render={() => (
+            render={({ field }) => (
               <TextFieldWithIcon
+                {...field}
                 label="メール"
                 placeholder="メールを入力してください"
                 type="email"
@@ -129,7 +131,6 @@ const signUp = () => {
                     />
                   </>
                 }
-                {...register('email')}
               />
             )}
           />
