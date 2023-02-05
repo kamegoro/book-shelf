@@ -20,3 +20,11 @@ model User {
   passwordHash String
   avatar       String
 }
+
+model Register {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  token     String
+  name      String
+  email     String
+}
