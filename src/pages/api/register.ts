@@ -1,25 +1,57 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import RegisterRepository from '@/core/domains/register/RegisterRepository';
 
-// プロジェクト内で使う型は１箇所で纏めたい
+import crypto from 'crypto';
+
+// FIXME: プロジェクト内で使う型は１箇所で纏めたい
 type Data = {
-  token: string;
-  name: string;
-  email: string;
-  createdAt: number;
+  data: {
+    token: string;
+    name: string;
+    email: string;
+    createdAt: number;
+  };
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+type Error = {
+  error: {
+    message: string;
+  };
+};
+
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data | Error>) {
+  const registerRepository = new RegisterRepository();
+
   switch (req.method) {
     case 'GET':
-      // パラメータに付与されているTokenの有無を確認
+      // NOTE: パラメータに付与されているTokenの有無を確認
       break;
 
     case 'POST':
-      // Request Bodyにデータが含まれているかのバリデーション
+      const requestBody = req.body;
+      if (!requestBody.email || !requestBody.name) {
+        res.status(400).json({ error: { message: 'email and password must be present.' } });
+      }
+
+      // TODO: Request Bodyにデータが含まれているかのバリデーション
+
+      requestBody as { email: string; name: string };
+
+      const token = crypto.randomUUID();
+      registerRepository
+        .postRegister({ ...requestBody, token })
+        .then(() => {
+          // TODO: メール送信の処理
+          res.status(201);
+        })
+        .catch(() => {
+          res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
+        });
+
       break;
 
     case 'DELETE':
-    // Tokenの有効期限が切れている or ユーザー登録が完了したらテーブルデータを削除する
+    // TODO: Tokenの有効期限が切れている or ユーザー登録が完了したらテーブルデータを削除する
 
     default:
       res.status(405).end();

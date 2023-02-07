@@ -1,4 +1,6 @@
 import prisma from '@/utils/prisma';
+import { Register } from '@/utils/prisma';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 export interface IRegisterRepository {
   postRegister: ({
@@ -9,11 +11,11 @@ export interface IRegisterRepository {
     name: string;
     email: string;
     token: string;
-  });
+  }) => Promise<Register>;
 }
 
-export class RegisterRepository {
-  static async postRegister({
+export default class RegisterRepository implements IRegisterRepository {
+  async postRegister({
     name,
     email,
     token,
@@ -21,12 +23,13 @@ export class RegisterRepository {
     name: string;
     email: string;
     token: string;
-  }) {
+  }): Promise<Register> {
     return prisma.register
       .create({ data: { name, email, token } })
       .then((register) => register)
-      .catch((err) => {
-        throw err;
+      .catch((error) => {
+        // TODO: ErrorHandlingを細かく対応したい
+        throw error;
       });
   }
 }
