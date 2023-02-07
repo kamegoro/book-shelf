@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+// プロジェクト内で使う型は１箇所で纏めたい
 type Data = {
   token: string;
   name: string;

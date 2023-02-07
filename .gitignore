@@ -39,4 +39,4 @@ next-env.d.ts
 .env
 
 # prisma db
-db
+db/pgdata

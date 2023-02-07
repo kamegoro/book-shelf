@@ -1,0 +1,2 @@
+FROM postgres:14
+ENV LANG ja_JP.UTF-8
