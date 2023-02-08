@@ -10,6 +10,7 @@
 [![React](https://img.shields.io/badge/react-ui_javascript_liblary-dimgray?style=for-the-badge&logo=react)](https://ja.reactjs.org/)
 [![Next.js](https://img.shields.io/badge/next.js-react_framework-dimgray?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![MUI](https://img.shields.io/badge/mui-ui_component_library-dimgray?style=for-the-badge&logo=mui)](https://mui.com/)
+[![PNPM](https://img.shields.io/badge/pnpm-package_manager-dimgray?style=for-the-badge&logo=pnpm)](https://pnpm.io/ja/)
 [![Webpack](https://img.shields.io/badge/webpack-javascript_bundler-dimgray.svg?style=for-the-badge&logo=webpack)](https://webpack.js.org/)
 [![Prisma](https://img.shields.io/badge/prisma-ORM-dimgray.svg?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
 [![Github Actions](https://img.shields.io/badge/github_actions-ci/cd-dimgray?style=for-the-badge&logo=github)](https://github.com/features/actions)
