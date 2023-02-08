@@ -1,6 +1,5 @@
 import prisma from '@/utils/prisma';
 import { Register } from '@/utils/prisma';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 export interface IRegisterRepository {
   postRegister: ({
@@ -12,6 +11,10 @@ export interface IRegisterRepository {
     email: string;
     token: string;
   }) => Promise<Register>;
+
+  deleteRegister: ({ token }: { token: string }) => Promise<void>;
+
+  getRegister: ({ token }: { token: string }) => Promise<Register | null>;
 }
 
 export default class RegisterRepository implements IRegisterRepository {
@@ -31,5 +34,23 @@ export default class RegisterRepository implements IRegisterRepository {
         // TODO: ErrorHandlingを細かく対応したい
         throw error;
       });
+  }
+
+  async deleteRegister({ token }: { token: string }): Promise<void> {
+    return prisma.register
+      .findFirst({
+        where: { token },
+      })
+      .then((result) => {
+        if (result) {
+          prisma.register.delete({ where: { id: result.id } });
+        }
+      });
+  }
+
+  async getRegister({ token }: { token: string }): Promise<Register | null> {
+    return prisma.register.findFirst({
+      where: { token },
+    });
   }
 }

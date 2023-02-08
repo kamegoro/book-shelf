@@ -1,15 +1,51 @@
+import { PostRegister } from '@/core/models/register/postRegister';
+import { Register } from '@/core/models/register/register';
+
 export interface IRegisterService {
-  addRegister: ({ name, email }: { name: string; email: string }) => Promise<void>;
+  addRegister: ({ name, email }: PostRegister) => Promise<void>;
+  getRegister: ({ token }: { token: string }) => Promise<Register | null>;
+  deleteRegister: ({ token }: { token: string }) => Promise<void>;
 }
 
 export default class RegisterService implements IRegisterService {
-  async addRegister({ name, email }: { name: string; email: string }) {
+  async addRegister({ name, email }: PostRegister) {
     return fetch('/api/register', { method: 'POST', body: JSON.stringify({ name, email }) })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);
-          console.error('esponse.status:', response.status);
-          console.error('esponse.statusText:', response.statusText);
+          console.error('response.status:', response.status);
+          console.error('response.statusText:', response.statusText);
+          throw new Error(response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error('エラーが発生しました', error);
+      });
+  }
+
+  async getRegister({ token }: { token: string }): Promise<Register | null> {
+    return fetch(`/api/register${new URLSearchParams(token)}`, { method: 'GET' })
+      .then(async (response) => {
+        if (!response.ok) {
+          console.error('response.ok:', response.ok);
+          console.error('response.status:', response.status);
+          console.error('response.statusText:', response.statusText);
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error('エラーが発生しました', error);
+      });
+  }
+
+  async deleteRegister({ token }: { token: string }): Promise<void> {
+    return fetch(`/api/register${new URLSearchParams(token)}`, { method: 'DELETE' })
+      .then(async (response) => {
+        if (!response.ok) {
+          console.error('response.ok:', response.ok);
+          console.error('response.status:', response.status);
+          console.error('response.statusText:', response.statusText);
           throw new Error(response.statusText);
         }
       })
