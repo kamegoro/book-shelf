@@ -8,6 +8,4 @@ services:
     environment:
       POSTGRES_USER: makifore
       POSTGRES_PASSWORD: 12345678
-      PGDATA: /var/lib/postgresql/data/pgdata
-    volumes:
-      - ./db:/var/lib/postgresql/data
+      POSTGRES_DB: book_shelf
