@@ -5,7 +5,6 @@ import crypto from 'crypto';
 import { PostRegister } from '@/core/models/register/postRegister';
 import { Register } from '@/core/models/register/register';
 
-// FIXME: プロジェクト内で使う型は１箇所で纏めたい
 type Data = {
   data: Register | null;
 };

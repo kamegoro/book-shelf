@@ -45,12 +45,21 @@ export default class RegisterRepository implements IRegisterRepository {
         if (result) {
           prisma.register.delete({ where: { id: result.id } });
         }
+      })
+      .catch((error) => {
+        // TODO: ErrorHandlingを細かく対応したい
+        throw error;
       });
   }
 
   async getRegister({ token }: { token: string }): Promise<Register | null> {
-    return prisma.register.findFirst({
-      where: { token },
-    });
+    return prisma.register
+      .findFirst({
+        where: { token },
+      })
+      .catch((error) => {
+        // TODO: ErrorHandlingを細かく対応したい
+        throw error;
+      });
   }
 }
