@@ -3,7 +3,7 @@ import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import sendMail from '@/utils/sendgrid';
 import crypto from 'crypto';
 import { PostRegister } from '@/core/models/register/postRegister';
-import { Register } from '@/core/models/register/register';
+import { Register } from '@/core/models/register';
 
 type Data = {
   data: Register | null;
@@ -26,9 +26,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
         return;
       }
 
-      registerRepository.getRegister({ token }).then((register) => {
-        res.status(200).json({ data: register });
-      });
+      registerRepository
+        .getRegister({ token })
+        .then((register) => {
+          res.status(200).json({ data: register });
+        })
+        .catch(() => {
+          res.status(500).json({ error: { message: 'failed' } });
+        });
       break;
 
     case 'POST':

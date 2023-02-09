@@ -6,7 +6,7 @@ erDiagram
     String name  
     String email  
     String passwordHash  
-    String avatar  
+    String avatar  "nullable"
     }
   
 

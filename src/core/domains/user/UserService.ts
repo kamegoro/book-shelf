@@ -1,13 +1,16 @@
 import { PostRegister } from '@/core/models/register/postRegister';
-import { Register } from '@/core/models/register';
+import { User } from '@/core/models/user';
+import { User as PrismaUser } from '@/utils/prisma';
 
-export interface IRegisterService {
-  addRegister: ({ name, email }: PostRegister) => Promise<void>;
-  getRegister: ({ token }: { token: string }) => Promise<Register | null>;
-  deleteRegister: ({ token }: { token: string }) => Promise<void>;
+export interface IUserService {
+  postUser: ({ name, email, passwordHash }: Omit<PrismaUser, 'id'>) => Promise<User>;
+
+  getUserForId: ({ id }: Pick<PrismaUser, 'id'>) => Promise<User | null>;
+
+  getUserForEmail: ({ email }: Pick<PrismaUser, 'email'>) => Promise<User | null>;
 }
 
-export default class RegisterService implements IRegisterService {
+export default class UserService implements IUserService {
   async addRegister({ name, email }: PostRegister) {
     return fetch('/api/register', { method: 'POST', body: JSON.stringify({ name, email }) })
       .then(async (response) => {
