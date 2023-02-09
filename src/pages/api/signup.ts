@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import RegisterRepository from '@/core/domains/register/RegisterRepository';
-import sendMail from '@/utils/sendgrid';
 import crypto from 'crypto';
-import { PostRegister } from '@/core/models/register/postRegister';
-import { Register } from '@/core/models/register/register';
+import UserRepository from '@/core/domains/user/UserRepository';
+import { User } from '@/core/models/user';
 
 type Data = {
-  data: Register | null;
+  data: User | null;
 };
 
 type Error = {
@@ -21,6 +19,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
       break;
 
     case 'POST':
+      const body = req.body;
+      if (!body.email || !body.name || !body.password) {
+        res
+          .status(400)
+          .json({ error: { message: 'email and user and password must be present.' } });
+        return;
+      }
+
       break;
 
     case 'DELETE':
