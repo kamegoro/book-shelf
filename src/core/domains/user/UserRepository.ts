@@ -3,7 +3,7 @@ import { User } from '@/core/models/user';
 import { User as PrismaUser } from '@/utils/prisma';
 
 export interface IUserRepository {
-  postUser: ({ name, email, passwordHash, avatar }: Omit<PrismaUser, 'id'>) => Promise<User>;
+  postUser: ({ name, email, passwordHash }: Omit<PrismaUser, 'id' | 'avatar'>) => Promise<User>;
 
   getUserForId: ({ id }: Pick<PrismaUser, 'id'>) => Promise<User | null>;
 
@@ -11,10 +11,10 @@ export interface IUserRepository {
 }
 
 export default class UserRepository implements IUserRepository {
-  async postUser({ name, email, passwordHash, avatar }: Omit<PrismaUser, 'id'>): Promise<User> {
+  async postUser({ name, email, passwordHash }: Omit<PrismaUser, 'id' | 'avatar'>): Promise<User> {
     return prisma.user
       .create({
-        data: { name, email, passwordHash, avatar },
+        data: { name, email, passwordHash },
         select: { id: true, email: true, name: true, avatar: true },
       })
       .then((user) => user)

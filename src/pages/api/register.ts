@@ -37,12 +37,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
       break;
 
     case 'POST':
-      const requestBody = req.body;
-      if (!requestBody.email || !requestBody.name) {
+      const body = req.body;
+      if (!body.email || !body.name) {
         res.status(400).json({ error: { message: 'email and password must be present.' } });
         return;
       }
-      requestBody as PostRegister; // TODO: Request Bodyにデータが含まれているかのバリデーション
+
+      // TODO: 型バリデーション
+      const requestBody = {
+        name: body.name as string,
+        email: body.email as string,
+      } as const;
 
       const fromMail = process.env.FROM_MAIL;
       if (!fromMail) {
@@ -59,25 +64,24 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
       registerRepository
         .postRegister({ ...requestBody, token: newToken })
         .then(async () => {
-          // TODO: SendGrid登録完了までコメントアウト
-          //           await sendMail({
-          //             to: requestBody.mail,
-          //             from: fromMail,
-          //             subject: '【Book Shelf】アカウント登録のお知らせ',
-          //             text: `
-          // Book Shelfからのお知らせです。
-          // アカウント登録のリクエストを受け付けました。
-          // 下記のリンクからパスワードの設定をお願い致します。
-          // 【Book Shelf登録ページ】
-          // ${url}/register?token=${newToken}
-          //             `,
-          //           })
-          //             .then((response) => {
-          //               res.status(response[0].statusCode);
-          //             })
-          //             .catch((error) => {
-          //               res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
-          //             });
+          await sendMail({
+            to: requestBody.email,
+            from: fromMail,
+            subject: '【Book Shelf】アカウント登録のお知らせ',
+            text: `
+Book Shelfからのお知らせです。
+アカウント登録のリクエストを受け付けました。
+下記のリンクからパスワードの設定をお願い致します。
+【Book Shelf登録ページ】
+${url}/register?token=${newToken}
+                      `,
+          })
+            .then((response) => {
+              res.status(response[0].statusCode);
+            })
+            .catch((error) => {
+              res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
+            });
           res.status(200);
         })
         .catch(() => {
@@ -99,7 +103,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
           res.status(200);
         })
         .catch(() => {
-          // FIXME: Prismaから返されるステータスコードを返すようにしたい
           res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
         });
 
