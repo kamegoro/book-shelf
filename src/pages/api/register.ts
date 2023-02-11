@@ -63,8 +63,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
 
       registerRepository
         .postRegister({ ...requestBody, token: newToken })
-        .then(async () => {
-          await sendMail({
+        .then(() => {
+          sendMail({
             to: requestBody.email,
             from: fromMail,
             subject: '【Book Shelf】アカウント登録のお知らせ',
@@ -79,8 +79,8 @@ ${url}/register?token=${newToken}
             .then((response) => {
               res.status(response[0].statusCode);
             })
-            .catch((error) => {
-              res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
+            .catch(() => {
+              res.status(500).json({ error: { message: 'メールの送信に失敗しました' } });
             });
           res.status(200);
         })
@@ -92,10 +92,12 @@ ${url}/register?token=${newToken}
 
     case 'DELETE':
       // 配列形式 or undefinedの場合は不正とみなす
-      if (Array.isArray(token) || !token) {
+      if (typeof token !== 'string' || !token) {
         res.status(400).json({ error: { message: 'The format of the token is incorrect.' } });
         return;
       }
+
+      token;
 
       registerRepository
         .deleteRegister({ token })

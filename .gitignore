@@ -40,3 +40,6 @@ next-env.d.ts
 
 # prisma db
 db/pgdata
+
+# jwt secret key
+jwtRS256.key

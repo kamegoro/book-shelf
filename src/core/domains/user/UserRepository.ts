@@ -7,7 +7,9 @@ export interface IUserRepository {
 
   getUserForId: ({ id }: Pick<PrismaUser, 'id'>) => Promise<User | null>;
 
-  getUserForEmail: ({ email }: Pick<PrismaUser, 'email'>) => Promise<User | null>;
+  getUserForEmail: ({
+    email,
+  }: Pick<PrismaUser, 'email'>) => Promise<(User & Pick<PrismaUser, 'passwordHash'>) | null>;
 }
 
 export default class UserRepository implements IUserRepository {
@@ -35,11 +37,13 @@ export default class UserRepository implements IUserRepository {
       });
   }
 
-  async getUserForEmail({ email }: Pick<PrismaUser, 'email'>): Promise<User | null> {
+  async getUserForEmail({
+    email,
+  }: Pick<PrismaUser, 'email'>): Promise<(User & Pick<PrismaUser, 'passwordHash'>) | null> {
     return prisma.user
       .findUnique({
         where: { email },
-        select: { id: true, email: true, name: true, avatar: true },
+        select: { id: true, email: true, name: true, avatar: true, passwordHash: true },
       })
       .then((user) => user)
       .catch((error) => {
