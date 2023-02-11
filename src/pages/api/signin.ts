@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return res.status(400).json({ error: { message: 'email and password must be present.' } });
       }
 
-      const user = userRepository
+      userRepository
         .getUserForEmail({ email: body.email as string })
         .then((responseUser) => {
           if (!responseUser) {
@@ -63,7 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
               const token = jwt.sign(sessionInfo, JWT_SECRET);
 
-              res.status(204).setHeader(
+              return res.status(204).setHeader(
                 'Set-Cookie',
                 cookie.serialize('book_shelf_session', token, {
                   httpOnly: true,
