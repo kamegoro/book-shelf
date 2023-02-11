@@ -1,30 +1,27 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import crypto from 'crypto';
 import UserRepository from '@/core/domains/user/UserRepository';
-import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import bcrypt from 'bcrypt';
 
 import { User } from '@/core/models/user';
 
-type Data = {
-  data: User | null;
-};
+type Response =
+  | User
+  | null
+  | {
+      status: number;
+      message: string;
+    }
+  | void;
 
-type Error = {
-  error: {
-    message: string;
-  };
-};
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data | Error>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   switch (req.method) {
     case 'POST':
       const body = req.body;
       if (!body.email || !body.name || !body.password) {
-        res
-          .status(400)
-          .json({ error: { message: 'email and user and password must be present.' } });
-        return;
+        return res.status(400).json({
+          status: 400,
+          message: 'email and user and password must be present.',
+        });
       }
 
       // TODO: 型バリデーションをしたい
@@ -38,10 +35,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       userRepository
         .postUser(requestBody)
         .then(() => {
-          res.status(201);
+          res.status(201).send();
         })
         .catch(() => {
-          res.status(500).json({ error: { message: 'failed' } });
+          res.status(500).json({
+            status: 500,
+            message: 'failed',
+          });
         });
 
       break;

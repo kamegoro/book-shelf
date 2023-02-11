@@ -2,44 +2,51 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import sendMail from '@/utils/sendgrid';
 import crypto from 'crypto';
-import { PostRegister } from '@/core/models/register/postRegister';
 import { Register } from '@/core/models/register';
 
-type Data = {
-  data: Register | null;
-};
+type Response =
+  | Register
+  | null
+  | {
+      status: number;
+      message: string;
+    }
+  | void;
 
-type Error = {
-  error: {
-    message: string;
-  };
-};
-
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data | Error>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const registerRepository = new RegisterRepository();
   const { token } = req.query;
 
   switch (req.method) {
     case 'GET':
       if (Array.isArray(token) || !token) {
-        res.status(400).json({ error: { message: 'The format of the token is incorrect.' } });
+        res.status(400).json({
+          status: 400,
+          message: 'The format of the token is incorrect.',
+        });
         return;
       }
 
       registerRepository
         .getRegister({ token })
         .then((register) => {
-          res.status(200).json({ data: register });
+          res.status(200).json(register);
         })
         .catch(() => {
-          res.status(500).json({ error: { message: 'failed' } });
+          res.status(500).json({
+            status: 500,
+            message: 'failed',
+          });
         });
       break;
 
     case 'POST':
       const body = req.body;
       if (!body.email || !body.name) {
-        res.status(400).json({ error: { message: 'email and password must be present.' } });
+        res.status(400).json({
+          status: 400,
+          message: 'email and password must be present.',
+        });
         return;
       }
 
@@ -51,7 +58,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
 
       const fromMail = process.env.FROM_MAIL;
       if (!fromMail) {
-        res.status(500).json({ error: { message: 'from mail must be present' } });
+        res.status(500).json({
+          status: 500,
+          message: 'from mail must be present',
+        });
         return;
       }
 
@@ -61,10 +71,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data |
           : 'http://localhost:3000/';
       const newToken = crypto.randomUUID();
 
-      registerRepository
+      return registerRepository
         .postRegister({ ...requestBody, token: newToken })
-        .then(() => {
-          sendMail({
+        .then(async () => {
+          await sendMail({
             to: requestBody.email,
             from: fromMail,
             subject: '【Book Shelf】アカウント登録のお知らせ',
@@ -75,17 +85,15 @@ Book Shelfからのお知らせです。
 【Book Shelf登録ページ】
 ${url}/register?token=${newToken}
                       `,
-          })
-            .then((response) => {
-              res.status(response[0].statusCode);
-            })
-            .catch(() => {
-              res.status(500).json({ error: { message: 'メールの送信に失敗しました' } });
-            });
-          res.status(200);
+          }).then((v) => {
+            res.status(v[0].statusCode).json();
+          });
         })
         .catch(() => {
-          res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
+          res.status(500).json({
+            status: 500,
+            message: 'An unexpected error has occurred.',
+          });
         });
 
       break;
@@ -93,7 +101,10 @@ ${url}/register?token=${newToken}
     case 'DELETE':
       // 配列形式 or undefinedの場合は不正とみなす
       if (typeof token !== 'string' || !token) {
-        res.status(400).json({ error: { message: 'The format of the token is incorrect.' } });
+        res.status(400).json({
+          status: 400,
+          message: 'The format of the token is incorrect.',
+        });
         return;
       }
 
@@ -102,10 +113,13 @@ ${url}/register?token=${newToken}
       registerRepository
         .deleteRegister({ token })
         .then(() => {
-          res.status(200);
+          res.status(200).json();
         })
         .catch(() => {
-          res.status(500).json({ error: { message: '予期せぬエラーが発生しました。' } });
+          res.status(500).json({
+            status: 500,
+            message: 'An unexpected error has occurred.',
+          });
         });
 
       break;

@@ -7,17 +7,16 @@ import cookie from 'cookie';
 
 import { User } from '@/core/models/user';
 
-type Data = {
-  data: User | null;
-};
+type Response =
+  | User
+  | null
+  | {
+      status: number;
+      message: string;
+    }
+  | void;
 
-type Error = {
-  error: {
-    message: string;
-  };
-};
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data | Error>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const userRepository = new UserRepository();
 
   switch (req.method) {
@@ -25,25 +24,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const body = req.body;
 
       if (!body.email || !body.password) {
-        return res.status(400).json({ error: { message: 'email and password must be present.' } });
+        return res.status(400).json({
+          status: 400,
+          message: 'email and password must be present.',
+        });
       }
 
       userRepository
         .getUserForEmail({ email: body.email as string })
         .then((responseUser) => {
           if (!responseUser) {
-            return res
-              .status(400)
-              .json({ error: { message: 'There is no user with this email address.' } });
+            return res.status(400).json({
+              status: 400,
+              message: 'There is no user with this email address.',
+            });
           }
 
           bcrypt
             .compare(body.password, responseUser.passwordHash)
             .then((responseBcrypt) => {
               if (!responseBcrypt) {
-                return res
-                  .status(403)
-                  .json({ error: { message: 'There is no user with this email address.' } });
+                return res.status(403).json({
+                  status: 403,
+                  message: 'There is no user with this email address.',
+                });
               }
 
               const sessionExpiresIn = 7 * 24 * 60 * 60; // 7 days
@@ -58,7 +62,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               const JWT_SECRET = readFileSync('jwtRS256.key');
 
               if (!JWT_SECRET) {
-                return res.status(500).json({ error: { message: 'JWT_SECRET is not set.' } });
+                return res.status(500).json({
+                  status: 500,
+                  message: 'JWT_SECRET is not set.',
+                });
               }
 
               const token = jwt.sign(sessionInfo, JWT_SECRET);
@@ -73,13 +80,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               );
             })
             .catch(() => {
-              return res
-                .status(500)
-                .json({ error: { message: 'An unexpected error has occurred.' } });
+              return res.status(500).json({
+                status: 500,
+                message: 'An unexpected error has occurred.',
+              });
             });
         })
         .catch(() => {
-          return res.status(500).json({ error: { message: 'Database communication failed' } });
+          return res.status(500).json({
+            status: 500,
+            message: 'Database communication failed',
+          });
         });
 
       break;
