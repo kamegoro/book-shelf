@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prisma:studio": "npx prisma studio",
+    "prisma:generate": "npx prisma generate",
     "lint": "next lint",
     "prettier": "prettier --write src"
   },
@@ -17,11 +19,10 @@
     "@mui/lab": "5.0.0-alpha.118",
     "@mui/material": "5.11.6",
     "@next/font": "13.1.6",
+    "@prisma/client": "4.9.0",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -39,6 +40,10 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hook-form": "0.2.5",
     "eslint-plugin-react-hooks": "4.6.0",
-    "prettier": "2.8.3"
+    "prettier": "2.8.3",
+    "@mermaid-js/mermaid-cli": "9.3.0",
+    "eslint": "8.33.0",
+    "prisma": "4.9.0",
+    "prisma-erd-generator": "1.2.5"
   }
 }
