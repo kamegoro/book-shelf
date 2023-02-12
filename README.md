@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Book Shelf
 
-## Getting Started
+個別に本を登録できるアプリケーション
 
-First, run the development server:
+## 使用技術
+
+[![Javascript](https://img.shields.io/badge/javascript-language-dimgray?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Node](https://img.shields.io/badge/node.js-language-dimgray?style=for-the-badge&logo=node.js)](https://nodejs.org/ja/)
+[![Typescript](https://img.shields.io/badge/typescript-javascript_type_definitions-dimgray?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+[![React](https://img.shields.io/badge/react-ui_javascript_liblary-dimgray?style=for-the-badge&logo=react)](https://ja.reactjs.org/)
+[![Next.js](https://img.shields.io/badge/next.js-react_framework-dimgray?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![MUI](https://img.shields.io/badge/mui-ui_component_library-dimgray?style=for-the-badge&logo=mui)](https://mui.com/)
+[![PNPM](https://img.shields.io/badge/pnpm-package_manager-dimgray?style=for-the-badge&logo=pnpm)](https://pnpm.io/ja/)
+[![Webpack](https://img.shields.io/badge/webpack-javascript_bundler-dimgray.svg?style=for-the-badge&logo=webpack)](https://webpack.js.org/)
+[![Prisma](https://img.shields.io/badge/prisma-ORM-dimgray.svg?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
+[![Github Actions](https://img.shields.io/badge/github_actions-ci/cd-dimgray?style=for-the-badge&logo=github)](https://github.com/features/actions)
+
+### 開発セットアップ
+
+パッケージマネージャは[pnpm](https://pnpm.io/ja/installation)を採用
+下記のコマンドで`node_modules`をインストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm i
+```
+
+[localhost:3000](http://localhost:3000)を立ち上げる
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### ブランチの切り方
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- 基本的には`main`ブランチから切るが、規模が大きくなる場合や作業が重複する場合のみ子ブランチから切っても良い。
+- ブランチ名は`feature/×××`に統一
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### PR の運用
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `main`ブランチにマージする時のみ自分を除く１名の`Approved`が必須
+  Free プランなので各自でマージ出来てしまいますが、極力避けてください）
+- `main`ブランチへの直 Push は禁止
+- `Approved`後は PR 作成者がマージしてください
