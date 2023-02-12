@@ -1,5 +1,4 @@
-import prisma from '@/utils/prisma';
-import { Register } from '@/utils/prisma';
+import prisma, { Register } from '@/utils/prisma';
 
 export interface IRegisterRepository {
   postRegister: ({
