@@ -12,7 +12,6 @@
     "prettier": "prettier --write src"
   },
   "dependencies": {
-    "@babel/core": "7.20.12",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
     "@mui/icons-material": "5.11.0",
@@ -20,17 +19,18 @@
     "@mui/material": "5.11.6",
     "@next/font": "13.1.6",
     "@prisma/client": "4.9.0",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "7.43.0",
-    "typescript": "4.9.4"
+    "react-hook-form": "7.43.0"
   },
   "devDependencies": {
-    "@mermaid-js/mermaid-cli": "9.3.0",
+    "@babel/core": "7.20.12",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@mermaid-js/mermaid-cli": "8.14.0",
+    "@next/eslint-plugin-next": "13.1.6",
     "@typescript-eslint/eslint-plugin": "5.50.0",
     "@typescript-eslint/parser": "5.50.0",
     "eslint": "8.33.0",
@@ -45,6 +45,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "prettier": "2.8.3",
     "prisma": "4.9.0",
-    "prisma-erd-generator": "1.2.5"
+    "prisma-erd-generator": "1.2.5",
+    "typescript": "4.9.4"
   }
 }

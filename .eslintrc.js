@@ -25,6 +25,17 @@ module.exports = {
     tsconfigRootDir: '.',
   },
   rules: {
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+        mjs: 'never',
+      },
+    ],
     // NOTE: 表示名がなくても関数名で判断できるため無効にする
     'react/display-name': 'off',
 
