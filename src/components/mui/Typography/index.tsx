@@ -1,8 +1,11 @@
 import MuiTypography, { TypographyProps } from '@mui/material/Typography';
 
-export type TypographyPropsType = TypographyProps;
+export type TypographyPropsType<T extends React.ElementType = 'span'> = TypographyProps<
+  T,
+  { component?: T }
+>;
 
-const Typography = (props: TypographyPropsType) => (
+const Typography = <T extends React.ElementType = 'p'>(props: TypographyPropsType<T>) => (
   <MuiTypography {...props}>{props.children}</MuiTypography>
 );
 
