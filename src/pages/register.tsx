@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import RegistrationFormBox from '@/components/molecules/RegistrationFormBox';
-import LoadingButton from '@/components/mui/LoadingButton';
+import Button from '@/components/mui/Button';
 import Stack from '@/components/mui/Stack';
 import TextField, { TextFieldPropsType } from '@/components/mui/TextField';
 
@@ -125,15 +125,18 @@ const Register = ({ name, email }: PageProps) => {
             />
           )}
         />
-        <LoadingButton
-          variant="contained"
-          sx={{ marginTop: 2 }}
-          loading={isLoading}
-          disabled={isLoading}
-          type="submit"
-        >
-          登録する
-        </LoadingButton>
+        {isLoading ? (
+          <>Loading...</>
+        ) : (
+          <Button
+            variant="contained"
+            sx={{ marginTop: 2 }}
+            disabled={isLoading}
+            type="submit"
+          >
+            登録する
+          </Button>
+        )}
       </Stack>
     </RegistrationFormBox>
   );
