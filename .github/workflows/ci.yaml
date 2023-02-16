@@ -10,17 +10,9 @@ permissions:
 
 jobs:
   run_build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: migrate
-        uses: './.github/workflows/excute_pnpm_command.yaml'
-        with:
-          command: 'pnpm run prisma:migrate'
-      - name: build
-        uses: './.github/workflows/excute_pnpm_command.yaml'
-        with:
-          command: 'pnpm run build'
+    uses: './.github/workflows/excute_pnpm_command.yaml'
+    with:
+      command: 'pnpm run build'
 
   run_lint:
     uses: './.github/workflows/excute_pnpm_command.yaml'
