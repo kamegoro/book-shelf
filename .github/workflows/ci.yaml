@@ -1,4 +1,4 @@
-name: "Run CI"
+name: 'Run CI'
 
 on:
   workflow_dispatch:
@@ -6,15 +6,21 @@ on:
     types: [opened, synchronize, reopened]
 
 permissions:
-  contents: "read"
+  contents: 'read'
 
 jobs:
   run_build:
-    uses: "./.github/workflows/excute_pnpm_command.yaml"
-    with:
-      command: "pnpm run build"
+    steps:
+      - name: migrate
+        uses: './.github/workflows/excute_pnpm_command.yaml'
+        with:
+          command: 'pnpm run prisma:migrate'
+      - name: build
+        uses: './.github/workflows/excute_pnpm_command.yaml'
+        with:
+          command: 'pnpm run build'
 
   run_lint:
-    uses: "./.github/workflows/excute_pnpm_command.yaml"
+    uses: './.github/workflows/excute_pnpm_command.yaml'
     with:
-      command: "pnpm run lint"
+      command: 'pnpm run lint'
