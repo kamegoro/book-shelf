@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { User as PrismaUser } from '@/utils/prisma';
 
 export interface IUserService {

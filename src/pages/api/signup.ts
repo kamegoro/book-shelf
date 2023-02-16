@@ -6,6 +6,14 @@ import UserRepository from '@/core/domains/user/UserRepository';
 
 import { User } from '@/core/models/user';
 
+interface ExtendNextApiRequest extends NextApiRequest {
+  body: {
+    email: string;
+    name: string;
+    password: string;
+  };
+}
+
 type Response =
   | User
   | null
@@ -15,12 +23,12 @@ type Response =
     }
   | void;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
   switch (req.method) {
-    case 'POST':
+    case 'POST': {
       const { body } = req;
       if (!body.email || !body.name || !body.password) {
-        return res.status(400).json({
+        res.status(400).json({
           status: 400,
           message: 'email and user and password must be present.',
         });
@@ -28,9 +36,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
       // TODO: 型バリデーションをしたい
       const requestBody = {
-        email: body.email as string,
-        name: body.name as string,
-        passwordHash: await bcrypt.hash(body.password as string, 10),
+        email: body.email,
+        name: body.name,
+        passwordHash: await bcrypt.hash(body.password, 10),
       } as const;
 
       const userRepository = new UserRepository();
@@ -47,6 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         });
 
       break;
+    }
 
     default:
       res.status(405).end();

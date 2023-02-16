@@ -10,6 +10,13 @@ import UserRepository from '@/core/domains/user/UserRepository';
 
 import { User } from '@/core/models/user';
 
+interface ExtendNextApiRequest extends NextApiRequest {
+  body: {
+    email: string;
+    password: string;
+  };
+}
+
 type Response =
   | User
   | null
@@ -19,22 +26,23 @@ type Response =
     }
   | void;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
   const userRepository = new UserRepository();
 
   switch (req.method) {
-    case 'GET':
+    case 'GET': {
       const { body } = req;
 
       if (!body.email || !body.password) {
-        return res.status(400).json({
+        res.status(400).json({
           status: 400,
           message: 'email and password must be present.',
         });
+        return;
       }
 
       userRepository
-        .getUserForEmail({ email: body.email as string })
+        .getUserForEmail({ email: body.email })
         .then((responseUser) => {
           if (!responseUser) {
             return res.status(400).json({
@@ -43,7 +51,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             });
           }
 
-          bcrypt
+          return bcrypt
             .compare(body.password, responseUser.passwordHash)
             .then((responseBcrypt) => {
               if (!responseBcrypt) {
@@ -97,6 +105,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         );
 
       break;
+    }
 
     default:
       res.status(405).end();

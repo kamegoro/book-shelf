@@ -1,4 +1,4 @@
-import sgMail from '@sendgrid/mail';
+import sgMail, { MailService } from '@sendgrid/mail';
 
 export type SendGridMsg = {
   to: string;
@@ -7,7 +7,7 @@ export type SendGridMsg = {
   text: string;
 };
 
-const sendMail = async (msg: SendGridMsg): Promise<[sgMail.ClientResponse, {}]> => {
+const sendMail: MailService['send'] = async (msg: SendGridMsg) => {
   const sendGridKey = process.env.SENDGRID_API_KEY;
   if (!sendGridKey) {
     throw new Error('sendgrid api key must be present.');

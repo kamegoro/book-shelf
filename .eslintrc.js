@@ -36,6 +36,9 @@ module.exports = {
         mjs: 'never',
       },
     ],
+    // NOTE: Coreロジック内でクラスメソッドをthisを使わないことを許可する
+    'class-methods-use-this': ['off'],
+
     // NOTE: 表示名がなくても関数名で判断できるため無効にする
     'react/display-name': 'off',
 

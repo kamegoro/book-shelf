@@ -6,6 +6,13 @@ import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import { Register } from '@/core/models/register';
 import sendMail from '@/utils/sendgrid';
 
+interface ExtendNextApiRequest extends NextApiRequest {
+  body: {
+    email: string;
+    name: string;
+  };
+}
+
 type Response =
   | Register
   | null
@@ -15,12 +22,12 @@ type Response =
     }
   | void;
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
   const registerRepository = new RegisterRepository();
   const { token } = req.query;
 
   switch (req.method) {
-    case 'GET':
+    case 'GET': {
       if (Array.isArray(token) || !token) {
         res.status(400).json({
           status: 400,
@@ -41,10 +48,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
           });
         });
       break;
+    }
 
-    case 'POST':
+    case 'POST': {
       const { body } = req;
-      if (!body.email || !body.name) {
+
+      // 型エラーは無いがInterfaceで強制的に型を付与しているだけなので、バリデーションは必須
+      if (!body.name || !body.name) {
         res.status(400).json({
           status: 400,
           message: 'email and password must be present.',
@@ -54,11 +64,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
 
       // TODO: 型バリデーション
       const requestBody = {
-        name: body.name as string,
-        email: body.email as string,
+        name: body.name,
+        email: body.email,
       } as const;
 
       const fromMail = process.env.FROM_MAIL;
+
       if (!fromMail) {
         res.status(500).json({
           status: 500,
@@ -73,7 +84,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
           : 'http://localhost:3000/';
       const newToken = crypto.randomUUID();
 
-      return registerRepository
+      registerRepository
         .postRegister({ ...requestBody, token: newToken })
         .then(async () => {
           await sendMail({
@@ -99,8 +110,9 @@ ${url}/register?token=${newToken}
         });
 
       break;
+    }
 
-    case 'DELETE':
+    case 'DELETE': {
       // 配列形式 or undefinedの場合は不正とみなす
       if (typeof token !== 'string' || !token) {
         res.status(400).json({
@@ -109,8 +121,6 @@ ${url}/register?token=${newToken}
         });
         return;
       }
-
-      token;
 
       registerRepository
         .deleteRegister({ token })
@@ -125,6 +135,7 @@ ${url}/register?token=${newToken}
         });
 
       break;
+    }
 
     default:
       res.status(405).end();

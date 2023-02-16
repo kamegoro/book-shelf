@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable no-console */
+
 import { Register } from '@/core/models/register';
 import { PostRegister } from '@/core/models/register/postRegister';
 
@@ -24,7 +27,7 @@ export default class RegisterService implements IRegisterService {
   }
 
   async getRegister({ token }: { token: string }): Promise<Register | null> {
-    return fetch(`/api/register${new URLSearchParams(token)}`, { method: 'GET' })
+    return fetch(`/api/register${new URLSearchParams({ token }).toString()}`, { method: 'GET' })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);
@@ -40,7 +43,7 @@ export default class RegisterService implements IRegisterService {
   }
 
   async deleteRegister({ token }: { token: string }): Promise<void> {
-    return fetch(`/api/register${new URLSearchParams(token)}`, { method: 'DELETE' })
+    return fetch(`/api/register${new URLSearchParams({ token }).toString()}`, { method: 'DELETE' })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);

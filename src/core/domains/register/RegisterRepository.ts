@@ -42,7 +42,12 @@ export default class RegisterRepository implements IRegisterRepository {
       })
       .then((result) => {
         if (result) {
-          prisma.register.delete({ where: { id: result.id } });
+          prisma.register
+            .delete({ where: { id: result.id } })
+            .then(() => {})
+            .catch((error) => {
+              throw error;
+            });
         }
       })
       .catch((error) => {
