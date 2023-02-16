@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import UserRepository from '@/core/domains/user/UserRepository';
+
 import bcrypt from 'bcrypt';
+
+import UserRepository from '@/core/domains/user/UserRepository';
 
 import { User } from '@/core/models/user';
 
@@ -16,7 +18,7 @@ type Response =
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   switch (req.method) {
     case 'POST':
-      const body = req.body;
+      const { body } = req;
       if (!body.email || !body.name || !body.password) {
         return res.status(400).json({
           status: 400,

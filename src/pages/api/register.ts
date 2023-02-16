@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import RegisterRepository from '@/core/domains/register/RegisterRepository';
-import sendMail from '@/utils/sendgrid';
+
 import crypto from 'crypto';
+
+import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import { Register } from '@/core/models/register';
+import sendMail from '@/utils/sendgrid';
 
 type Response =
   | Register
@@ -41,7 +43,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
       break;
 
     case 'POST':
-      const body = req.body;
+      const { body } = req;
       if (!body.email || !body.name) {
         res.status(400).json({
           status: 400,

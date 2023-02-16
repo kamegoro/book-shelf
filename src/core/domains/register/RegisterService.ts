@@ -1,5 +1,5 @@
-import { PostRegister } from '@/core/models/register/postRegister';
 import { Register } from '@/core/models/register';
+import { PostRegister } from '@/core/models/register/postRegister';
 
 export interface IRegisterService {
   addRegister: ({ name, email }: PostRegister) => Promise<void>;

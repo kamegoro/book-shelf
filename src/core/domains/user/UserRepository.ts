@@ -1,6 +1,5 @@
-import prisma from '@/utils/prisma';
 import { User } from '@/core/models/user';
-import { User as PrismaUser } from '@/utils/prisma';
+import prisma, { User as PrismaUser } from '@/utils/prisma';
 
 export interface IUserRepository {
   postUser: ({ name, email, passwordHash }: Omit<PrismaUser, 'id' | 'avatar'>) => Promise<User>;

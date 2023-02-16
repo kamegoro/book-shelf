@@ -1,9 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import UserRepository from '@/core/domains/user/UserRepository';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+
 import { readFileSync } from 'fs';
+
+import bcrypt from 'bcrypt';
 import cookie from 'cookie';
+import jwt from 'jsonwebtoken';
+
+import UserRepository from '@/core/domains/user/UserRepository';
 
 import { User } from '@/core/models/user';
 
@@ -21,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   switch (req.method) {
     case 'GET':
-      const body = req.body;
+      const { body } = req;
 
       if (!body.email || !body.password) {
         return res.status(400).json({
@@ -74,24 +77,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 'Set-Cookie',
                 cookie.serialize('book_shelf_session', token, {
                   httpOnly: true,
-                  secure: process.env.NODE_ENV === 'development' ? false : true,
+                  secure: process.env.NODE_ENV !== 'development',
                   path: `/`,
                 }),
               );
             })
-            .catch(() => {
-              return res.status(500).json({
+            .catch(() =>
+              res.status(500).json({
                 status: 500,
                 message: 'An unexpected error has occurred.',
-              });
-            });
+              }),
+            );
         })
-        .catch(() => {
-          return res.status(500).json({
+        .catch(() =>
+          res.status(500).json({
             status: 500,
             message: 'Database communication failed',
-          });
-        });
+          }),
+        );
 
       break;
 
