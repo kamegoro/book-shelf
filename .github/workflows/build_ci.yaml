@@ -62,6 +62,8 @@ jobs:
         run: pnpm install
 
       - name: Prisma migrate
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/book_shelf
         run: pnpm run prisma:migrate
 
       - name: Build Next
