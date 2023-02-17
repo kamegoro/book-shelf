@@ -30,6 +30,8 @@ jobs:
         uses: './.github/workflows/excute_pnpm_command.yaml'
         with:
           command: 'pnpm run prisma:migrate'
+          env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: build
         uses: './.github/workflows/excute_pnpm_command.yaml'
         with:
