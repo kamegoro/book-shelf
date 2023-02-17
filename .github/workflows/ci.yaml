@@ -9,8 +9,8 @@ permissions:
   contents: 'read'
 
 jobs:
-  setup:
-    name: Setup
+  run-ci:
+    name: ci
 
     timeout-minutes: 10
 
@@ -70,38 +70,8 @@ jobs:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/book_shelf
         run: pnpm run prisma:migrate
 
-  build:
-    name: build
-
-    needs:
-      - setup
-
-    timeout-minutes: 10
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18]
-
-    steps:
       - name: Build Next
         run: pnpm run build
 
-  lint:
-    name: lint
-
-    needs:
-      - setup
-
-    timeout-minutes: 10
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18]
-
-    steps:
       - name: Lint
         run: pnpm run lint
