@@ -17,6 +17,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: book_shelf
         options: --health-cmg pg_isready
           --health-interval 10s
           --health-timeout 5s
