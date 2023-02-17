@@ -10,9 +10,30 @@ permissions:
 
 jobs:
   run_build:
-    uses: './.github/workflows/excute_pnpm_command.yaml'
-    with:
-      command: 'pnpm run build'
+    run-on: ubuntu-latest
+    service:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmg pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/book_shelf
+    steps:
+      - name: prisma migrate
+        uses: './.github/workflows/excute_pnpm_command.yaml'
+        with:
+          command: 'pnpm run prisma:migrate'
+      - name: build
+        uses: './.github/workflows/excute_pnpm_command.yaml'
+        with:
+          command: 'pnpm run build'
 
   run_lint:
     uses: './.github/workflows/excute_pnpm_command.yaml'
