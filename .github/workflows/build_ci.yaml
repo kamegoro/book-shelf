@@ -1,5 +1,8 @@
 name: 'Build CI'
 
+on:
+  workflow_call:
+
 permissions:
   contents: 'read'
 
