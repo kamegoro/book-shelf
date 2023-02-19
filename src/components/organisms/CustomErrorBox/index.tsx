@@ -19,7 +19,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f3fd',
+        backgroundColor: 'gray.background',
         width: '100vw',
         height: '100vh',
       }}
@@ -29,7 +29,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
           width: 700,
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: 'white',
+          backgroundColor: 'brand.white',
           pb: 6,
           boxShadow: '0px 0px 15px -5px #777777',
           borderRadius: '10px',
@@ -40,7 +40,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
           sx={{
             fontSize: 160,
             fontWeight: 'bold',
-            color: '#262626',
+            color: 'gray.text',
             textAlign: 'center',
             transform: 'translate(0,18px)',
           }}
@@ -49,7 +49,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
           <Typography
             component="span"
             sx={{
-              color: '#1565C0',
+              color: 'brand.primary',
               fontSize: 160,
               fontWeight: 'bold',
             }}
@@ -63,7 +63,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
             marginBottom: 1,
             fontSize: 20,
             fontWeight: 'bold',
-            color: '#262626',
+            color: 'gray.text',
             textAlign: 'center',
           }}
         >
@@ -73,7 +73,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
           sx={{
             fontSize: 14,
             opacity: 0.4,
-            color: '#262626',
+            color: 'gray.text',
             textAlign: 'center',
             marginBottom: 4,
           }}

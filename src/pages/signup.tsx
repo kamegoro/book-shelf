@@ -40,7 +40,7 @@ const signUp = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f3fd',
+        backgroundColor: 'gray.background',
         width: '100vw',
         height: '100vh',
       }}
@@ -50,7 +50,7 @@ const signUp = () => {
           width: 500,
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: 'white',
+          backgroundColor: 'brand.white',
           p: 6,
           boxShadow: '0px 0px 15px -5px #777777',
           borderRadius: '10px',
@@ -73,7 +73,7 @@ const signUp = () => {
           placeholder="ユーザー名を入力してください"
           icon={
             <>
-              <PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              <PersonIcon sx={{ color: 'brand.primary', height: 20, wight: 20, marginRight: 1 }} />
             </>
           }
         />
@@ -82,7 +82,9 @@ const signUp = () => {
           placeholder="メールを入力してください"
           icon={
             <>
-              <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              <MailOutlineIcon
+                sx={{ color: 'brand.primary', height: 20, wight: 20, marginRight: 1 }}
+              />
             </>
           }
         />
@@ -91,7 +93,7 @@ const signUp = () => {
           placeholder="8文字以上のパスワードを入力してください"
           icon={
             <>
-              <LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              <LockIcon sx={{ color: 'brand.primary', height: 20, wight: 20, marginRight: 1 }} />
             </>
           }
         />
