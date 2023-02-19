@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { readFileSync } from 'fs';
-
 import bcrypt from 'bcrypt';
 import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
@@ -70,7 +68,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                 sub: responseUser.id,
               } as const;
 
-              const JWT_SECRET = readFileSync('jwtRS256.key');
+              const { JWT_SECRET } = process.env;
 
               if (!JWT_SECRET) {
                 return res.status(500).json({
