@@ -30,7 +30,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
       if (!body.email || !body.name || !body.password) {
         res.status(400).json({
           status: 400,
-          message: 'email and user and password must be present.',
+          message: 'email and name and password must be present.',
         });
       }
 

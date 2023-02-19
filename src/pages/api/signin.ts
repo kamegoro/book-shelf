@@ -6,8 +6,6 @@ import jwt from 'jsonwebtoken';
 
 import UserRepository from '@/core/domains/user/UserRepository';
 
-import { User } from '@/core/models/user';
-
 interface ExtendNextApiRequest extends NextApiRequest {
   body: {
     email: string;
@@ -15,23 +13,19 @@ interface ExtendNextApiRequest extends NextApiRequest {
   };
 }
 
-type Response =
-  | User
-  | null
-  | {
-      status: number;
-      message: string;
-    }
-  | void;
+type Response = {
+  status: number;
+  message: string;
+} | void;
 
 export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
   const userRepository = new UserRepository();
 
   switch (req.method) {
     case 'GET': {
-      const { body } = req;
+      const { email, password } = req.query;
 
-      if (!body.email || !body.password) {
+      if (!email || Array.isArray(email) || !password || Array.isArray(password)) {
         res.status(400).json({
           status: 400,
           message: 'email and password must be present.',
@@ -40,7 +34,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
       }
 
       userRepository
-        .getUserForEmail({ email: body.email })
+        .getUserForEmail({ email })
         .then((responseUser) => {
           if (!responseUser) {
             return res.status(400).json({
@@ -50,7 +44,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
           }
 
           return bcrypt
-            .compare(body.password, responseUser.passwordHash)
+            .compare(password, responseUser.passwordHash)
             .then((responseBcrypt) => {
               if (!responseBcrypt) {
                 return res.status(403).json({
@@ -79,7 +73,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
 
               const token = jwt.sign(sessionInfo, JWT_SECRET);
 
-              return res.status(204).setHeader(
+              res.setHeader(
                 'Set-Cookie',
                 cookie.serialize('book_shelf_session', token, {
                   httpOnly: true,
@@ -87,6 +81,8 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                   path: `/`,
                 }),
               );
+
+              return res.end(res.getHeader('book_shelf_session'));
             })
             .catch(() =>
               res.status(500).json({

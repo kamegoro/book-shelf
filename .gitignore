@@ -38,6 +38,5 @@ next-env.d.ts
 # postgres
 db/pgdata
 
-
 # 環境変数の管理
 .env
