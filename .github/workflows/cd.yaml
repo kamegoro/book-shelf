@@ -64,6 +64,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        # prisma・supabaseの繋ぎ込み処理が必要
 
       - name: Migration to production postgres
         env:
