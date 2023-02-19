@@ -64,10 +64,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-        # prisma・supabaseの繋ぎ込み処理が必要
 
       - name: Migration to production postgres
         env:
           # 本番環境のURL
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/book_shelf
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: pnpm run prisma migration deploy
