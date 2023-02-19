@@ -13,7 +13,7 @@
 [![Typescript](https://img.shields.io/badge/typescript-javascript_type_definitions-dimgray?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
 [![Webpack](https://img.shields.io/badge/webpack-javascript_bundler-dimgray.svg?style=for-the-badge&logo=webpack)](https://webpack.js.org/)
 
-#### Backend
+#### Server-Side
 
 [![Node](https://img.shields.io/badge/node.js-language-dimgray?style=for-the-badge&logo=node.js)](https://nodejs.org/ja/)
 [![Typescript](https://img.shields.io/badge/typescript-javascript_type_definitions-dimgray?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
