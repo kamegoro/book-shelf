@@ -17,16 +17,16 @@
 
 [![Node](https://img.shields.io/badge/node.js-language-dimgray?style=for-the-badge&logo=node.js)](https://nodejs.org/ja/)
 [![Typescript](https://img.shields.io/badge/typescript-javascript_type_definitions-dimgray?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-dimgray.svg?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-database-dimgray.svg?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
 [![Prisma](https://img.shields.io/badge/prisma-ORM-dimgray.svg?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
 
 #### Other
 
 [![Github Actions](https://img.shields.io/badge/github_actions-ci/cd-dimgray?style=for-the-badge&logo=github)](https://github.com/features/actions)
 [![PNPM](https://img.shields.io/badge/pnpm-package_manager-dimgray?style=for-the-badge&logo=pnpm)](https://pnpm.io/ja/)
-[![Render](https://img.shields.io/badge/render-dimgray?style=for-the-badge&logo=render)](https://dashboard.render.com/)
-[![Supabase](https://img.shields.io/badge/supabase-dimgray?style=for-the-badge&logo=supabase)](https://app.supabase.com/projects)
-[![Postman](https://img.shields.io/badge/postman-dimgray?style=for-the-badge&logo=postman)](https://www.postman.com/)
+[![Render](https://img.shields.io/badge/render-Hosting-dimgray?style=for-the-badge&logo=render)](https://dashboard.render.com/)
+[![Supabase](https://img.shields.io/badge/supabase-BaaS-dimgray?style=for-the-badge&logo=supabase)](https://app.supabase.com/projects)
+[![Postman](https://img.shields.io/badge/postman-API_operation_check-dimgray?style=for-the-badge&logo=postman)](https://www.postman.com/)
 
 ### 開発セットアップ
 
