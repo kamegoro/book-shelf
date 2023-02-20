@@ -30,15 +30,16 @@
     "react-hook-form": "7.43.0"
   },
   "devDependencies": {
+    "@babel/core": "7.20.12",
+    "@faker-js/faker": "7.6.0",
     "@mermaid-js/mermaid-cli": "9.3.0",
+    "@next/eslint-plugin-next": "13.1.6",
     "@types/bcrypt": "5.0.0",
     "@types/cookie": "0.5.1",
     "@types/jsonwebtoken": "9.0.1",
-    "@babel/core": "7.20.12",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
-    "@next/eslint-plugin-next": "13.1.6",
     "@typescript-eslint/eslint-plugin": "5.50.0",
     "@typescript-eslint/parser": "5.50.0",
     "eslint": "8.33.0",

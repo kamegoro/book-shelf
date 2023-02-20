@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': 7.20.12
   '@emotion/react': 11.10.5
   '@emotion/styled': 11.10.5
+  '@faker-js/faker': 7.6.0
   '@mermaid-js/mermaid-cli': 9.3.0
   '@mui/icons-material': 5.11.0
   '@mui/material': 5.11.6
@@ -59,6 +60,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.20.12
+  '@faker-js/faker': 7.6.0
   '@mermaid-js/mermaid-cli': 9.3.0
   '@next/eslint-plugin-next': 13.1.6
   '@types/bcrypt': 5.0.0
@@ -430,6 +432,11 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@humanwhocodes/config-array/0.11.8:
