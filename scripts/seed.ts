@@ -1,10 +1,15 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
 import bcrypt from 'bcrypt';
 
-import prisma, { Prisma } from '@/utils/prisma';
+import prisma, { Prisma } from '../src/utils/prisma';
 
 faker.locale = 'ja';
+
+/*
+  Databaseのリセット・シードデータの作成処理なので本番環境では実行しないでください。
+*/
 
 const createUser = async () => {
   const users: Prisma.UserCreateInput[] = await Promise.all(
@@ -37,11 +42,40 @@ const createRegister = async () => {
 };
 
 const main = async () => {
+  console.log(`
+    -------------------------------
+
+      Data seeding in progress...
+
+    -------------------------------
+  `);
   await createUser();
   await createRegister();
 };
 
-main().catch((error) => {
-  // eslint-disable-next-line no-console
-  console.error(error);
-});
+main()
+  .then(() => {
+    console.log(`
+    -------------------------------
+
+      Data seeded successfully!
+
+    -------------------------------
+  `);
+    console.log('Data seeded successfully!');
+    // Note: Nodeプロセスが正常終了した場合に呼び出す
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error(error);
+    console.log(`
+    -------------------------------
+
+          Data seeding failed.
+
+    -------------------------------
+  `);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
