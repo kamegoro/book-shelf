@@ -14,7 +14,15 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
   const router = useRouter();
 
   return (
-    <Box sx={{}}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        width: '100%',
+      }}
+    >
       <Box
         sx={{
           width: {
