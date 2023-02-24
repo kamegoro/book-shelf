@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useSnackbar } from '@/components/contexts/SnackbarContext.tsx';
+import { useSnackbar } from '@/components/contexts/SnackbarContext';
 import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 
