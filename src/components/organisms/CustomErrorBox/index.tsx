@@ -26,19 +26,29 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
     >
       <Box
         sx={{
-          width: 700,
+          width: {
+            xs: '100%',
+            md: 600,
+          },
           display: 'flex',
           flexDirection: 'column',
           backgroundColor: 'brand.white',
-          pb: 6,
+          pb: {
+            xs: 4,
+            sm: 6,
+          },
           boxShadow: '0px 0px 15px -5px #777777',
           borderRadius: '10px',
+          px: 3,
         }}
       >
         <Typography
           component="h1"
           sx={{
-            fontSize: 160,
+            fontSize: {
+              xs: 100,
+              sm: 160,
+            },
             fontWeight: 'bold',
             color: 'gray.text',
             textAlign: 'center',
@@ -50,7 +60,10 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
             component="span"
             sx={{
               color: 'brand.primary',
-              fontSize: 160,
+              fontSize: {
+                xs: 100,
+                sm: 160,
+              },
               fontWeight: 'bold',
             }}
           >
@@ -61,7 +74,10 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
         <Typography
           sx={{
             marginBottom: 1,
-            fontSize: 20,
+            fontSize: {
+              xs: 12,
+              sm: 20,
+            },
             fontWeight: 'bold',
             color: 'gray.text',
             textAlign: 'center',
@@ -71,7 +87,10 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
         </Typography>
         <Typography
           sx={{
-            fontSize: 14,
+            fontSize: {
+              xs: 10,
+              sm: 14,
+            },
             opacity: 0.4,
             color: 'gray.text',
             textAlign: 'center',
@@ -85,7 +104,18 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
             router.push(`/`);
           }}
           variant="contained"
-          sx={{ width: 260, margin: '0 auto', fontWeight: 'bold' }}
+          sx={{
+            width: {
+              xs: '100%',
+              sm: 260,
+            },
+            fontSize: {
+              xs: 10,
+              sm: 14,
+            },
+            margin: '0 auto',
+            fontWeight: 'bold',
+          }}
           size="large"
         >
           TOPページへ
