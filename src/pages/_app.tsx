@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import { ThemeProvider } from '@mui/material';
+import theme from '@/styles/theme';
 import Router from 'next/router';
 import nProgress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -41,7 +43,9 @@ export default function App({ Component, pageProps }: AppProps) {
           px: 4,
         }}
       >
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </Box>
     </>
   );
