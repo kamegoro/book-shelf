@@ -12,11 +12,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// TODO: Migrationファイルの作成
 model User {
-  id           String @id @default(cuid())
+  id           String  @id @default(cuid())
   name         String
-  email        String @unique
+  email        String  @unique
   passwordHash String
-  avatar       String
+  avatar       String?
+}
+
+model Register {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  token     String
+  name      String
+  email     String
 }
