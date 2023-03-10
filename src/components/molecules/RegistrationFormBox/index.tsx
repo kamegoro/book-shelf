@@ -14,24 +14,39 @@ const RegistrationFormBox = ({ description, children }: RegistrationFormBoxProps
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#f0f3fd',
+      backgroundColor: 'gray.background',
       width: '100vw',
       height: '100vh',
     }}
   >
     <Box
       sx={{
-        width: 500,
+        width: {
+          xs: '100%',
+          sm: 500,
+        },
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'white',
-        p: 6,
+        backgroundColor: 'brand.white',
+        p: {
+          xs: 3,
+          sm: 6,
+        },
         boxShadow: '0px 0px 15px -5px #777777',
         borderRadius: '10px',
       }}
     >
       <Typography
-        sx={{ mb: 4, fontSize: 32, textAlign: 'center', marginBottom: 1, fontWeight: 'bold' }}
+        sx={{
+          mb: 4,
+          fontSize: {
+            xs: 26,
+            sm: 32,
+          },
+          textAlign: 'center',
+          marginBottom: 1,
+          fontWeight: 'bold',
+        }}
         color="black"
       >
         Book Shelf

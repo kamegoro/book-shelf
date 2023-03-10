@@ -26,14 +26,22 @@ const TextFieldWithIcon = memo(
   >(({ label, placeholder, icon, value, type, onChange, disabled }, ref) => (
     <TextField
       ref={ref}
-      sx={{ mb: 3 }}
+      sx={{
+        mb: {
+          xs: 2,
+          sm: 3,
+        },
+      }}
       label={label}
       required
       placeholder={placeholder}
       InputProps={{
         startAdornment: icon,
         sx: {
-          fontSize: 14,
+          fontSize: {
+            xs: 10,
+            sm: 14,
+          },
         },
       }}
       value={value}
