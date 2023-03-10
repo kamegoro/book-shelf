@@ -8,6 +8,7 @@ import 'nprogress/nprogress.css';
 
 import Box from '@/components/mui/Box';
 import Head from 'next/head';
+import { SnackbarProvider } from '@/components/contexts/SnackbarContext';
 
 Router.events.on('routeChangeStart', () => nProgress.start());
 Router.events.on('routeChangeError', () => nProgress.done());
@@ -44,7 +45,21 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       >
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#f0f3fd',
+              width: '100%',
+              height: '100%',
+              px: 4,
+            }}
+          >
+            <SnackbarProvider>
+              <Component {...pageProps} />
+            </SnackbarProvider>
+          </Box>
         </ThemeProvider>
       </Box>
     </>
