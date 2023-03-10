@@ -19,14 +19,22 @@ const TextFieldWithIcon = ({
 }) => {
   return (
     <TextField
-      sx={{ mb: 3 }}
+      sx={{
+        mb: {
+          xs: 2,
+          sm: 3,
+        },
+      }}
       label={label}
       required
       placeholder={placeholder}
       InputProps={{
         startAdornment: icon,
         sx: {
-          fontSize: 14,
+          fontSize: {
+            xs: 10,
+            sm: 14,
+          },
         },
       }}
     />
@@ -40,24 +48,39 @@ const signUp = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f3fd',
+        backgroundColor: 'gray.background',
         width: '100vw',
         height: '100vh',
       }}
     >
       <Box
         sx={{
-          width: 500,
+          width: {
+            xs: '100%',
+            sm: 500,
+          },
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: 'white',
-          p: 6,
+          backgroundColor: 'brand.white',
+          p: {
+            xs: 3,
+            sm: 6,
+          },
           boxShadow: '0px 0px 15px -5px #777777',
           borderRadius: '10px',
         }}
       >
         <Typography
-          sx={{ mb: 4, fontSize: 32, textAlign: 'center', marginBottom: 1, fontWeight: 'bold' }}
+          sx={{
+            mb: 4,
+            fontSize: {
+              xs: 26,
+              sm: 32,
+            },
+            textAlign: 'center',
+            marginBottom: 1,
+            fontWeight: 'bold',
+          }}
           color="black"
         >
           Book Shelf
@@ -73,7 +96,7 @@ const signUp = () => {
           placeholder="ユーザー名を入力してください"
           icon={
             <>
-              <PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              <PersonIcon sx={{ color: 'brand.primary', height: 20, wight: 20, marginRight: 1 }} />
             </>
           }
         />
@@ -82,7 +105,9 @@ const signUp = () => {
           placeholder="メールを入力してください"
           icon={
             <>
-              <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              <MailOutlineIcon
+                sx={{ color: 'brand.primary', height: 20, wight: 20, marginRight: 1 }}
+              />
             </>
           }
         />
@@ -91,13 +116,22 @@ const signUp = () => {
           placeholder="8文字以上のパスワードを入力してください"
           icon={
             <>
-              <LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              <LockIcon sx={{ color: 'brand.primary', height: 20, wight: 20, marginRight: 1 }} />
             </>
           }
         />
         <Button
           variant="contained"
-          sx={{ marginTop: 4 }}
+          sx={{
+            marginTop: {
+              xs: 2,
+              sm: 4,
+            },
+            fontSize: {
+              xs: 10,
+              sm: 14,
+            },
+          }}
         >
           作成する
         </Button>
