@@ -1,4 +1,6 @@
-import React, { useState, createContext, useContext, Fragment, ReactNode } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useState, createContext, useContext, Fragment } from 'react';
+
 import Alert, { AlertPropsType } from '@/components/atoms/Alert';
 import Box from '@/components/mui/Box';
 
@@ -24,8 +26,6 @@ export const SnackbarProvider = ({ children }: { children: JSX.Element }) => {
   const [snackState, setSnackState] = useState<SnackState[]>([]);
 
   const showSnackbar = (message: SnackState['message'], type: SnackState['type'], ms?: number) => {
-    if (!ms) ms = 3000;
-
     const id = window.self.crypto.randomUUID();
 
     setSnackState((state) => [
@@ -39,7 +39,7 @@ export const SnackbarProvider = ({ children }: { children: JSX.Element }) => {
 
     setTimeout(() => {
       setSnackState((state) => state.filter((v) => v.id !== id));
-    }, ms);
+    }, ms || 3000);
   };
 
   const showSuccess = (message: string, ms?: number) => {
@@ -63,24 +63,20 @@ export const SnackbarProvider = ({ children }: { children: JSX.Element }) => {
       }}
     >
       <Box sx={{ position: 'absolute', zIndex: 100, top: 10, right: 10 }}>
-        {snackState.map((v) => {
-          return (
-            <Fragment key={v.id}>
-              <Alert
-                severity={v.type}
-                sx={{ mb: 1 }}
-              >
-                {v.message}
-              </Alert>
-            </Fragment>
-          );
-        })}
+        {snackState.map((v) => (
+          <Fragment key={v.id}>
+            <Alert
+              severity={v.type}
+              sx={{ mb: 1 }}
+            >
+              {v.message}
+            </Alert>
+          </Fragment>
+        ))}
       </Box>
       {children}
     </SnackbarContext.Provider>
   );
 };
 
-export const useSnackbar = () => {
-  return useContext(SnackbarContext);
-};
+export const useSnackbar = () => useContext(SnackbarContext);

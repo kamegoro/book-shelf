@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
+
+import { useRouter } from 'next/router';
+
 import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
-import { useRouter } from 'next/router';
 import Typography from '@/components/mui/Typography';
-import { ReactNode } from 'react';
 
 type CustomErrorBoxPropsType = {
   statusCode: '403' | '404' | '500';
@@ -101,6 +103,7 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
         </Typography>
         <Button
           onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             router.push(`/`);
           }}
           variant="contained"

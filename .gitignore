@@ -38,14 +38,5 @@ next-env.d.ts
 # postgres
 db/pgdata
 
-# secret key
-jwtRS256.key
-
 # 環境変数の管理
 .env
-
-# prisma db
-db/pgdata
-
-# jwt secret key
-jwtRS256.key

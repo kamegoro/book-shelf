@@ -1,14 +1,18 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material';
-import theme from '@/styles/theme';
-import Router from 'next/router';
-import nProgress from 'nprogress';
-import 'nprogress/nprogress.css';
 
-import Box from '@/components/mui/Box';
 import Head from 'next/head';
+import Router from 'next/router';
+
+import { ThemeProvider } from '@mui/material';
+
+import nProgress from 'nprogress';
+
 import { SnackbarProvider } from '@/components/contexts/SnackbarContext';
+import Box from '@/components/mui/Box';
+
+import theme from '@/styles/theme';
+import 'nprogress/nprogress.css';
 
 Router.events.on('routeChangeStart', () => nProgress.start());
 Router.events.on('routeChangeError', () => nProgress.done());

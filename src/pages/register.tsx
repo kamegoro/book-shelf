@@ -1,5 +1,7 @@
 import { memo, forwardRef, ReactNode, useState } from 'react';
 
+import { GetServerSideProps } from 'next';
+
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import PersonIcon from '@mui/icons-material/Person';
@@ -7,7 +9,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import RegistrationFormBox from '@/components/molecules/RegistrationFormBox';
-
 import Button from '@/components/mui/Button';
 import Stack from '@/components/mui/Stack';
 import TextField, { TextFieldPropsType } from '@/components/mui/TextField';
@@ -26,22 +27,14 @@ const TextFieldWithIcon = memo(
   >(({ label, placeholder, icon, value, type, onChange, disabled }, ref) => (
     <TextField
       ref={ref}
-      sx={{
-        mb: {
-          xs: 2,
-          sm: 3,
-        },
-      }}
+      sx={{ mb: 3 }}
       label={label}
       required
       placeholder={placeholder}
       InputProps={{
         startAdornment: icon,
         sx: {
-          fontSize: {
-            xs: 10,
-            sm: 14,
-          },
+          fontSize: 14,
         },
       }}
       value={value}
@@ -53,15 +46,20 @@ const TextFieldWithIcon = memo(
 );
 
 type InputProps = {
+  password: string;
+  passwordConfirm: string;
+};
+
+type PageProps = {
   name: string;
   email: string;
 };
 
-const SignUp = () => {
+const Register = ({ name, email }: PageProps) => {
   const { control, handleSubmit } = useForm<InputProps>({
     defaultValues: {
-      name: '',
-      email: '',
+      password: '',
+      passwordConfirm: '',
     },
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -74,33 +72,52 @@ const SignUp = () => {
   };
 
   return (
-    <RegistrationFormBox description="ユーザー情報を入力してください。">
+    <RegistrationFormBox description="パスワードを8文字以上で入力してください。">
       <Stack
         component="form"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <TextFieldWithIcon
+          label="ユーザー名"
+          value={name}
+          disabled
+          icon={<PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+        />
+
+        <TextFieldWithIcon
+          label="メール"
+          type="email"
+          value={email}
+          disabled
+          icon={
+            <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+          }
+        />
         <Controller
-          name="name"
+          name="password"
           control={control}
           render={({ field }) => (
             <TextFieldWithIcon
               {...field}
-              label="ユーザー名"
-              placeholder="ユーザー名を入力してください"
+              label="パスワード"
+              placeholder="パスワードを入力してください"
+              type="password"
               disabled={isLoading}
-              icon={<PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+              icon={
+                <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+              }
             />
           )}
         />
         <Controller
-          name="email"
+          name="passwordConfirm"
           control={control}
           render={({ field }) => (
             <TextFieldWithIcon
               {...field}
-              label="メール"
-              placeholder="メールを入力してください"
-              type="email"
+              label="パスワード確認"
+              placeholder="パスワードを再入力してください"
+              type="password"
               disabled={isLoading}
               icon={
                 <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
@@ -117,7 +134,7 @@ const SignUp = () => {
             disabled={isLoading}
             type="submit"
           >
-            メールを送信する
+            登録する
           </Button>
         )}
       </Stack>
@@ -125,4 +142,15 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const props: PageProps = {
+    name: '山本 太郎',
+    email: 'tarou.yamamoto@gmail.com',
+  };
+
+  return {
+    props,
+  };
+};
