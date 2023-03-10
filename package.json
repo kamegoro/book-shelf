@@ -41,10 +41,7 @@
     "prisma-erd-generator": "1.2.5"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ],
+    "*.{ts,tsx}": "pnpm run lint",
     "*": "pnpm run prettier"
   }
 }
