@@ -58,7 +58,7 @@ export default createTheme({
     },
     gray: {
       text: '#262626',
-      background: '#f0f3fd',
+      background: '#fafafa',
     },
   },
   breakpoints: {

@@ -37,35 +37,23 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: '#f0f3fd',
-          width: '100%',
-          height: '100%',
-          px: 4,
-        }}
-      >
-        <ThemeProvider theme={theme}>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#f0f3fd',
-              width: '100%',
-              height: '100%',
-              px: 4,
-            }}
-          >
-            <SnackbarProvider>
-              <Component {...pageProps} />
-            </SnackbarProvider>
-          </Box>
-        </ThemeProvider>
-      </Box>
+      <ThemeProvider theme={theme}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'gray.background',
+            width: '100%',
+            height: '100%',
+            px: 4,
+          }}
+        >
+          <SnackbarProvider>
+            <Component {...pageProps} />
+          </SnackbarProvider>
+        </Box>
+      </ThemeProvider>
     </>
   );
 }
