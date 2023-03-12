@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useRouter } from 'next/router';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -9,8 +11,19 @@ import IconButton from '@/components/mui/IconButton';
 import Toolbar from '@/components/mui/Toolbar';
 import Typography from '@/components/mui/Typography';
 
+import AppHeaderDrawer from './AppHeaderDrawer';
+
 const AppHeader = () => {
+  const [open, setOpen] = useState(false);
   const router = useRouter();
+
+  const onOpen = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   return (
     <AppBar
@@ -32,9 +45,17 @@ const AppHeader = () => {
           color="inherit"
           aria-label="menu"
           sx={{ mr: 1 }}
+          onClick={onOpen}
         >
           <MenuIcon sx={{ color: 'gray.text' }} />
         </IconButton>
+        <AppHeaderDrawer
+          open={open}
+          onOpen={onOpen}
+          onClose={onClose}
+          onClickOutSide={onClose}
+          onKeyDown={onClose}
+        />
         <Typography
           component="span"
           onClick={async () => {
