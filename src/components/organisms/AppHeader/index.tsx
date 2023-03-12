@@ -1,8 +1,12 @@
 import { useRouter } from 'next/router';
 
+import MenuIcon from '@mui/icons-material/Menu';
+
 import Avatar from '@/components/atoms/Avatar';
 import AppBar from '@/components/mui/AppBar';
 import Button from '@/components/mui/Button';
+import IconButton from '@/components/mui/IconButton';
+import Toolbar from '@/components/mui/Toolbar';
 import Typography from '@/components/mui/Typography';
 
 const AppHeader = () => {
@@ -15,22 +19,32 @@ const AppHeader = () => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        px: 2,
+        pr: 2,
         py: 1,
         backgroundColor: 'brand.white',
         height: 56,
         zIndex: 20,
       }}
     >
-      <Typography
-        component="span"
-        onClick={async () => {
-          await router.push('/');
-        }}
-        sx={{ color: 'gray.text', fontWeight: 'bold', fontSize: 20, p: 0, cursor: 'pointer' }}
-      >
-        Book Shelf
-      </Typography>
+      <Toolbar>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 1 }}
+        >
+          <MenuIcon sx={{ color: 'gray.text' }} />
+        </IconButton>
+        <Typography
+          component="span"
+          onClick={async () => {
+            await router.push('/');
+          }}
+          sx={{ color: 'gray.text', fontWeight: 'bold', fontSize: 20, p: 0, cursor: 'pointer' }}
+        >
+          Book Shelf
+        </Typography>
+      </Toolbar>
       <Button>
         <Avatar
           alt="ユーザーアイコン"

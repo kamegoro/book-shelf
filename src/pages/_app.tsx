@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <SnackbarProvider>
             <Box>
               <AppHeader />
-              <Box sx={{}}>
+              <Box sx={{ pt: '56px' }}>
                 <Component {...pageProps} />
               </Box>
             </Box>

@@ -4,7 +4,7 @@ import Typography from '@/components/mui/Typography';
 
 export default function Home() {
   return (
-    <Box sx={{ width: 960, minHeight: '100vh', py: 6 }}>
+    <Box sx={{ width: 960, minHeight: 'calc(100vh - 56px)', py: 6 }}>
       <Typography
         component="h2"
         sx={{
