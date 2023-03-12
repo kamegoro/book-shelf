@@ -1,5 +1,7 @@
+import BookCard from '@/components/molecules/BookCard';
 import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
+import Grid from '@/components/mui/Grid';
 import Typography from '@/components/mui/Typography';
 
 export default function Home() {
@@ -28,7 +30,23 @@ export default function Home() {
           </Typography>
           <Button variant="outlined">本棚へ</Button>
         </Box>
-        <Box>ここに本のリストが並ぶ</Box>
+        <Grid
+          container
+          spacing={6}
+        >
+          {new Array(10).fill(0).map((_, i) => (
+            <Grid
+              item
+              key={`${i + 1}`}
+            >
+              <BookCard
+                src="https://loremflickr.com/640/480/abstract"
+                title="本のタイトル"
+                description="本の詳細です"
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Box>
   );
