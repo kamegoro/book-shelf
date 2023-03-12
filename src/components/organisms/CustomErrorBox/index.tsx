@@ -102,9 +102,8 @@ const CustomErrorBox = ({ statusCode, message, description }: CustomErrorBoxProp
           {description}
         </Typography>
         <Button
-          onClick={() => {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            router.push(`/`);
+          onClick={async () => {
+            await router.push(`/`);
           }}
           variant="contained"
           sx={{
