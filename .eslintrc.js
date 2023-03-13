@@ -52,6 +52,9 @@ module.exports = {
     // NOTE: Reactのprops, state等を分割代入でなくても許可する
     'react/destructuring-assignment': 'off',
 
+    // NOTE: Reactのpropsでデフォルト値必須を無効にする
+    'react/require-default-props': 'off',
+
     // NOTE: Reactのコンポーネント定義を関数式、アロー関数を許可する
     'react/function-component-definition': [
       'error',

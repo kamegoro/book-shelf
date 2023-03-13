@@ -39,5 +39,5 @@
   ],
   "todo-tree.general.tags": ["HACK", "FIXME", "TODO", "NOTE"],
   "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
-  "cSpell.words": ["nProgress", "sendgrid"]
+  "cSpell.words": ["nProgress", "sendgrid", "Swipeable"]
 }

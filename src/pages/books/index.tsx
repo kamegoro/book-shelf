@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 
 import BookCard from '@/components/molecules/BookCard';
 import Box from '@/components/mui/Box';
-import Button from '@/components/mui/Button';
 import Typography from '@/components/mui/Typography';
 
 export default function Home() {
@@ -19,27 +18,9 @@ export default function Home() {
           mb: 4,
         }}
       >
-        DashBoard
+        本一覧
       </Typography>
       <Box sx={{ backgroundColor: 'brand.white', p: 4, borderRadius: 3 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-          <Typography
-            component="span"
-            sx={{
-              color: 'gray.text',
-            }}
-          >
-            直近の本リスト (30)
-          </Typography>
-          <Button
-            variant="outlined"
-            onClick={async () => {
-              await router.push(`/books`);
-            }}
-          >
-            本棚へ
-          </Button>
-        </Box>
         <Box sx={{ display: 'grid', gap: 1, gridTemplateColumns: 'repeat(4, 1fr)' }}>
           {new Array(10).fill(0).map((_, i) => (
             <Box key={`${i + 1}`}>
