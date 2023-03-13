@@ -1,7 +1,6 @@
 import BookCard from '@/components/molecules/BookCard';
 import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
-import Grid from '@/components/mui/Grid';
 import Typography from '@/components/mui/Typography';
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
         DashBoard
       </Typography>
       <Box sx={{ backgroundColor: 'brand.white', p: 4, borderRadius: 3 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
           <Typography
             component="span"
             sx={{
@@ -30,23 +29,17 @@ export default function Home() {
           </Typography>
           <Button variant="outlined">本棚へ</Button>
         </Box>
-        <Grid
-          container
-          spacing={6}
-        >
+        <Box sx={{ display: 'grid', gap: 1, gridTemplateColumns: 'repeat(4, 1fr)' }}>
           {new Array(10).fill(0).map((_, i) => (
-            <Grid
-              item
-              key={`${i + 1}`}
-            >
+            <Box key={`${i + 1}`}>
               <BookCard
                 src="https://loremflickr.com/640/480/abstract"
                 title="本のタイトル"
                 description="本の詳細です"
               />
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Box>
     </Box>
   );
