@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 
@@ -18,53 +20,72 @@ export type AppHeaderDrawerPropsType = Pick<
   onKeyDown: BoxPropsType['onKeyDown'];
 };
 
+const HeaderItems = [
+  {
+    name: '本棚',
+    path: '/books',
+  },
+  {
+    name: '設定',
+    path: '/settings',
+  },
+] as const;
+
 const AppHeaderDrawer = ({
   open,
   onClose,
   onOpen,
   onClickOutSide,
   onKeyDown,
-}: AppHeaderDrawerPropsType) => (
-  <SwipeableDrawer
-    open={open}
-    onClose={onClose}
-    onOpen={onOpen}
-  >
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={onClickOutSide}
-      onKeyDown={onKeyDown}
+}: AppHeaderDrawerPropsType) => {
+  const router = useRouter();
+
+  return (
+    <SwipeableDrawer
+      open={open}
+      onClose={onClose}
+      onOpen={onOpen}
     >
-      <List>
-        {['本棚', '設定'].map((text, index) => (
-          <ListItem
-            key={text}
-            disablePadding
-          >
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['ログアウト'].map((text, index) => (
-          <ListItem
-            key={text}
-            disablePadding
-          >
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  </SwipeableDrawer>
-);
+      <Box
+        sx={{ width: 250 }}
+        role="presentation"
+        onClick={onClickOutSide}
+        onKeyDown={onKeyDown}
+      >
+        <List>
+          {HeaderItems.map((item, index) => (
+            <ListItem
+              key={item.name}
+              disablePadding
+            >
+              <ListItemButton
+                onClick={async () => {
+                  await router.push(item.path);
+                }}
+              >
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['ログアウト'].map((text, index) => (
+            <ListItem
+              key={text}
+              disablePadding
+            >
+              <ListItemButton>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+    </SwipeableDrawer>
+  );
+};
 
 export default AppHeaderDrawer;
