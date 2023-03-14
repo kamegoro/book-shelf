@@ -18,6 +18,7 @@ model User {
   email        String  @unique
   passwordHash String
   avatar       String?
+  Book         Book[]
 }
 
 model Register {
@@ -26,4 +27,14 @@ model Register {
   token     String
   name      String
   email     String
+}
+
+model Book {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  title       String
+  description String
+  image       String?
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
 }

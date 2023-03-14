@@ -41,6 +41,28 @@ const createRegister = async () => {
   });
 };
 
+const createBooks = async () => {
+  const users = await prisma.user.findMany();
+  if (!users.length) return;
+
+  await Promise.all(
+    users.map(async (user) => {
+      const books: Prisma.BookCreateManyInput[] = Array(30)
+        .fill(0)
+        .map(() => ({
+          authorId: user.id,
+          title: faker.animal.cat(),
+          description: faker.commerce.productDescription(),
+          image: '', // Note: 時間がある時に、fakerのimageURLをbase64に変換して保存したい
+        }));
+
+      await prisma.book.createMany({
+        data: books,
+      });
+    }),
+  );
+};
+
 const main = async () => {
   console.log(`
     -------------------------------
@@ -51,6 +73,7 @@ const main = async () => {
   `);
   await createUser();
   await createRegister();
+  await createBooks();
 };
 
 main()
