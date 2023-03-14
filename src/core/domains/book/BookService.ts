@@ -47,7 +47,7 @@ export default class BookService implements IBookService {
   }
 
   async getBooks({ authorId }: GetBooks): Promise<Book[]> {
-    return fetch(`/api/user/${authorId}/books}`, { method: 'GET' })
+    return fetch(`/api/users/${authorId}/books}`, { method: 'GET' })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);
