@@ -18,4 +18,14 @@ erDiagram
     String email  
     }
   
+
+  Book {
+    String id PK 
+    DateTime createdAt  
+    String title  
+    String description  
+    String image  "nullable"
+    }
+  
+    Book o{--|| User : "author"
 ```
