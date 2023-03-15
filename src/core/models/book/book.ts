@@ -2,6 +2,6 @@ export type Book = {
   id: string;
   title: string;
   description: string;
-  image?: string;
-  createdAt: number;
+  image: string | null;
+  createdAt: Date;
 };
