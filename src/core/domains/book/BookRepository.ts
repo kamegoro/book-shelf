@@ -1,7 +1,12 @@
 import prisma, { Prisma, Book } from '@/utils/prisma';
 
 export interface IBookRepository {
-  postBook: ({ authorId, title, description, image }: Prisma.BookCreateManyInput) => Promise<Book>;
+  postBook: ({
+    authorId,
+    title,
+    description,
+    image,
+  }: Prisma.BookCreateManyInput) => Promise<{ id: string }>;
 
   deleteBook: ({ id }: Pick<Book, 'id'>) => Promise<void>;
 
@@ -16,7 +21,7 @@ export default class BookRepository implements IBookRepository {
     title,
     description,
     image,
-  }: Prisma.BookCreateManyInput): Promise<Book> {
+  }: Prisma.BookCreateManyInput): Promise<{ id: string }> {
     return prisma.book
       .create({
         data: {
@@ -26,7 +31,9 @@ export default class BookRepository implements IBookRepository {
           image,
         },
       })
-      .then((book) => book)
+      .then((book) => ({
+        id: book.id,
+      }))
       .catch((error) => {
         throw error;
       });
