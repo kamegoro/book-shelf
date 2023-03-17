@@ -6,19 +6,12 @@ import jwt from 'jsonwebtoken';
 
 import UserRepository from '@/core/domains/user/UserRepository';
 
-interface ExtendNextApiRequest extends NextApiRequest {
-  body: {
-    email: string;
-    password: string;
-  };
-}
-
 type Response = {
   status: number;
   message: string;
 } | void;
 
-export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const userRepository = new UserRepository();
 
   switch (req.method) {

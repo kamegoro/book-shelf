@@ -6,13 +6,11 @@ import UserRepository from '@/core/domains/user/UserRepository';
 
 import { User } from '@/core/models/user';
 
-interface ExtendNextApiRequest extends NextApiRequest {
-  body: {
-    email: string;
-    name: string;
-    password: string;
-  };
-}
+type RequestBody = {
+  email: string;
+  name: string;
+  password: string;
+};
 
 type Response =
   | User
@@ -23,10 +21,12 @@ type Response =
     }
   | void;
 
-export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   switch (req.method) {
     case 'POST': {
-      const { body } = req;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      const body = JSON.parse(req.body) as RequestBody;
+
       if (!body.email || !body.name || !body.password) {
         res.status(400).json({
           status: 400,

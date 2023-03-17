@@ -22,7 +22,7 @@ export default class RegisterService implements IRegisterService {
         }
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 
@@ -38,7 +38,7 @@ export default class RegisterService implements IRegisterService {
         return response.json();
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 
@@ -53,7 +53,7 @@ export default class RegisterService implements IRegisterService {
         }
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 }

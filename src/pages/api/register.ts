@@ -6,12 +6,10 @@ import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import { Register } from '@/core/models/register';
 import sendMail from '@/utils/sendgrid';
 
-interface ExtendNextApiRequest extends NextApiRequest {
-  body: {
-    email: string;
-    name: string;
-  };
-}
+type RequestBody = {
+  email: string;
+  name: string;
+};
 
 type Response =
   | Register
@@ -22,7 +20,7 @@ type Response =
     }
   | void;
 
-export default function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const registerRepository = new RegisterRepository();
   const { token } = req.query;
 
@@ -51,7 +49,8 @@ export default function handler(req: ExtendNextApiRequest, res: NextApiResponse<
     }
 
     case 'POST': {
-      const { body } = req;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument
+      const body = JSON.parse(req.body) as RequestBody;
 
       // 型エラーは無いがInterfaceで強制的に型を付与しているだけなので、バリデーションは必須
       if (!body.name || !body.name) {
