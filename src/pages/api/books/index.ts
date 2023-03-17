@@ -4,16 +4,16 @@ import BookRepository from '@/core/domains/book/BookRepository';
 import { CreateBook } from '@/core/models/book';
 import { ApiResponse } from '@/types';
 
-interface ExtendNextApiRequest extends NextApiRequest {
-  body: CreateBook;
-}
+type RequestBody = CreateBook;
 
 type Response = { id: string } | null | ApiResponse | void;
 
-export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   switch (req.method) {
     case 'POST': {
-      const { body } = req;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      const body = JSON.parse(req.body) as RequestBody;
+
       if (!body.authorId || !body.description || !body.title) {
         res.status(400).json({
           status: 400,
