@@ -6,11 +6,13 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
+import { useSnackbar } from '@/components/contexts/SnackbarContext';
 import RegistrationFormBox from '@/components/molecules/RegistrationFormBox';
 
 import Button from '@/components/mui/Button';
 import Stack from '@/components/mui/Stack';
 import TextField, { TextFieldPropsType } from '@/components/mui/TextField';
+import RegisterService from '@/core/domains/register/RegisterService';
 
 const TextFieldWithIcon = memo(
   forwardRef<
@@ -58,7 +60,8 @@ type InputProps = {
 };
 
 const SignUp = () => {
-  const { control, handleSubmit } = useForm<InputProps>({
+  const { showError, showSuccess } = useSnackbar();
+  const { control, handleSubmit, resetField } = useForm<InputProps>({
     defaultValues: {
       name: '',
       email: '',
@@ -66,11 +69,23 @@ const SignUp = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit: SubmitHandler<InputProps> = () => {
+  const onSubmit: SubmitHandler<InputProps> = (value) => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    const registerService = new RegisterService();
+
+    registerService
+      .addRegister({ name: value.name, email: value.email })
+      .then(() => {
+        showSuccess('確認メールを送信しました');
+        resetField('email');
+        resetField('name');
+      })
+      .catch(() => {
+        showError('登録に失敗しました');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (

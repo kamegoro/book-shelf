@@ -26,7 +26,7 @@ export default class BookService implements IBookService {
         return response.json();
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 
@@ -42,7 +42,7 @@ export default class BookService implements IBookService {
         return response.json();
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 
@@ -58,7 +58,7 @@ export default class BookService implements IBookService {
         return response.json();
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 
@@ -73,7 +73,7 @@ export default class BookService implements IBookService {
         }
       })
       .catch((error) => {
-        console.error('エラーが発生しました', error);
+        throw error;
       });
   }
 }
