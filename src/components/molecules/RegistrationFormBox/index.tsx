@@ -1,14 +1,21 @@
 import { ReactNode } from 'react';
 
+import InfoIcon from '@mui/icons-material/Info';
+
 import Box from '@/components/mui/Box';
 import Typography from '@/components/mui/Typography';
 
 export type RegistrationFormBoxPropsType = {
   description: string;
   children: ReactNode;
+  errorMessage?: string;
 };
 
-const RegistrationFormBox = ({ description, children }: RegistrationFormBoxPropsType) => (
+const RegistrationFormBox = ({
+  description,
+  children,
+  errorMessage = undefined,
+}: RegistrationFormBoxPropsType) => (
   <Box
     sx={{
       display: 'flex',
@@ -47,16 +54,36 @@ const RegistrationFormBox = ({ description, children }: RegistrationFormBoxProps
           marginBottom: 1,
           fontWeight: 'bold',
         }}
-        color="black"
+        color="gray.text"
       >
         Book Shelf
       </Typography>
       <Typography
-        sx={{ mb: 4, fontSize: 14, textAlign: 'center', marginBottom: 4, opacity: 0.4 }}
-        color="black"
+        sx={{ mb: 1, fontSize: 14, textAlign: 'center', opacity: 0.4 }}
+        color="gray.text"
       >
         {description}
       </Typography>
+      {errorMessage && (
+        <Box
+          sx={{
+            mb: 4,
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <InfoIcon sx={{ height: 18, width: 18, mr: 2, color: 'brand.error' }} />
+          <Typography
+            sx={{ fontSize: 14 }}
+            color="brand.error"
+            component="span"
+          >
+            {errorMessage}
+          </Typography>
+        </Box>
+      )}
       {children}
     </Box>
   </Box>

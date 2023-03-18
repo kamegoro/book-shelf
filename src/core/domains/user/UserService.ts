@@ -16,10 +16,10 @@ export default class UserService implements IUserService {
     name,
     email,
     password,
-  }: Omit<PrismaUser, 'id' | 'passwordHash'> & {
+  }: Omit<PrismaUser, 'id' | 'passwordHash' | 'avatar'> & {
     password: string;
   }): Promise<void> {
-    return fetch('/api/signup', {
+    return fetch(`/api/signup`, {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
     })

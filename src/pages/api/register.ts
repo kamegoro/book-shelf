@@ -31,11 +31,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
           status: 400,
           message: 'The format of the token is incorrect.',
         });
-        return;
       }
 
       registerRepository
-        .getRegister({ token })
+        .getRegister({ token } as { token: string })
         .then((register) => {
           res.status(200).json(register);
         })

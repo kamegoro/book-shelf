@@ -71,6 +71,7 @@ const SignUp = () => {
 
   const onSubmit: SubmitHandler<InputProps> = (value) => {
     setIsLoading(true);
+
     const registerService = new RegisterService();
 
     registerService
