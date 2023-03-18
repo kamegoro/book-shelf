@@ -10,11 +10,13 @@ declare module '@mui/material/styles/createPalette' {
   interface BrandColors {
     primary: string;
     white: string;
+    error: string;
   }
 
   interface BrandColorOptions {
     primary?: string;
     white?: string;
+    error?: string;
   }
 
   interface GrayColors {
@@ -24,7 +26,7 @@ declare module '@mui/material/styles/createPalette' {
 
   interface GrayColorOptions {
     text?: string;
-    background: string;
+    background?: string;
   }
 }
 
@@ -55,6 +57,7 @@ export default createTheme({
     brand: {
       primary: '#1565C0',
       white: '#FFFFFF',
+      error: '#D32F2F',
     },
     gray: {
       text: '#262626',
