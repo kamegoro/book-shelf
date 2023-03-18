@@ -12,6 +12,7 @@ import Box from '@/components/mui/Box';
 import AppHeader from '@/components/organisms/AppHeader';
 
 import theme from '@/styles/theme';
+
 import 'nprogress/nprogress.css';
 
 Router.events.on('routeChangeStart', () => nProgress.start());
