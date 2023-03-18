@@ -19,6 +19,7 @@ import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 import Stack from '@/components/mui/Stack';
 import TextField, { TextFieldPropsType } from '@/components/mui/TextField';
+import Typography from '@/components/mui/Typography';
 import RegisterService from '@/core/domains/register/RegisterService';
 import UserService from '@/core/domains/user/UserService';
 
@@ -32,25 +33,37 @@ const TextFieldWithIcon = memo(
       // NOTE: 呼びだれているのにも関わらずlint errorを返されるので仕方なしに
       // eslint-disable-next-line react/no-unused-prop-types
       icon: ReactNode;
+      // eslint-disable-next-line react/no-unused-prop-types
+      errorMessage?: string;
     }
-  >(({ label, placeholder, icon, value, type, onChange, disabled }, ref) => (
-    <TextField
-      ref={ref}
-      sx={{ mb: 3 }}
-      label={label}
-      required
-      placeholder={placeholder}
-      InputProps={{
-        startAdornment: icon,
-        sx: {
-          fontSize: 14,
-        },
-      }}
-      value={value}
-      onChange={onChange}
-      type={type}
-      disabled={disabled}
-    />
+  >(({ label, placeholder, icon, value, errorMessage, type, onChange, disabled }, ref) => (
+    <>
+      <TextField
+        ref={ref}
+        sx={{ mb: errorMessage ? 0.5 : 3 }}
+        label={label}
+        required
+        placeholder={placeholder}
+        InputProps={{
+          startAdornment: icon,
+          sx: {
+            fontSize: 14,
+          },
+        }}
+        value={value}
+        onChange={onChange}
+        type={type}
+        disabled={disabled}
+      />
+      {errorMessage && (
+        <Typography
+          component="p"
+          sx={{ color: 'brand.error', fontSize: 12, mb: 1 }}
+        >
+          {errorMessage}
+        </Typography>
+      )}
+    </>
   )),
 );
 
@@ -73,7 +86,13 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
   const userService = new UserService();
   const router = useRouter();
   const { showError, showSuccess } = useSnackbar();
-  const { control, handleSubmit } = useForm<InputProps>({
+  const {
+    control,
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm<InputProps>({
     defaultValues: {
       password: '',
       passwordConfirm: '',
@@ -123,6 +142,10 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
           }
         />
         <Controller
+          {...register('password', {
+            required: 'パスワードは必須です',
+            validate: (value) => value.length > 8 || 'パスワードは8文字以上で入力してください',
+          })}
           name="password"
           control={control}
           render={({ field }) => (
@@ -131,6 +154,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
               label="パスワード"
               placeholder="パスワードを入力してください"
               type="password"
+              errorMessage={errors.password ? errors.password.message : undefined}
               disabled={isLoading || !!errorMessage}
               icon={
                 <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
@@ -139,6 +163,10 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
           )}
         />
         <Controller
+          {...register('passwordConfirm', {
+            required: '確認のためパスワードを再入力してください。',
+            validate: (value) => value === getValues('password') || 'パスワードが一致しません',
+          })}
           name="passwordConfirm"
           control={control}
           render={({ field }) => (
@@ -148,6 +176,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
               placeholder="パスワードを再入力してください"
               type="password"
               disabled={isLoading || !!errorMessage}
+              errorMessage={errors.passwordConfirm ? errors.passwordConfirm.message : undefined}
               icon={
                 <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
               }
