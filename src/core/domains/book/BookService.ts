@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable no-console */
 
-import { CreateBook, DeleteBook, GetBook, GetBooks, Book } from '@/core/models/book';
+import { CreateBook, DeleteBook, GetBook, Book } from '@/core/models/book';
+import { Cookie } from '@/types';
 
 export interface IBookService {
   createBook: ({ title, description, image, authorId }: CreateBook) => Promise<Book>;
   getBook: ({ id }: GetBook) => Promise<Book | null>;
-  getBooks: ({ authorId }: GetBooks) => Promise<Book[]>;
+  getBooks: ({ cookie }: Cookie) => Promise<Book[]>;
   deleteBook: ({ id }: DeleteBook) => Promise<void>;
 }
 
@@ -48,8 +49,13 @@ export default class BookService implements IBookService {
       });
   }
 
-  async getBooks({ authorId }: GetBooks): Promise<Book[]> {
-    return fetch(`${host}/api/users/${authorId}/books}`, { method: 'GET' })
+  async getBooks({ cookie }: Cookie): Promise<Book[]> {
+    return fetch(`${host}/api/books`, {
+      method: 'GET',
+      headers: {
+        cookie,
+      },
+    })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);

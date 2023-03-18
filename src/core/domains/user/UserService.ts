@@ -4,7 +4,7 @@ import { User, PostSignUp, GetUser, SignIn } from '@/core/models/user';
 
 export interface IUserService {
   signUpUser: ({ name, email, password }: PostSignUp) => Promise<void>;
-  signIn: ({ email, password }: SignIn) => Promise<User>;
+  signIn: ({ email, password }: SignIn) => Promise<void>;
   getUser: ({ id }: GetUser) => Promise<User>;
 }
 
@@ -27,7 +27,7 @@ export default class UserService implements IUserService {
       });
   }
 
-  async signIn({ email, password }: SignIn): Promise<User> {
+  async signIn({ email, password }: SignIn): Promise<void> {
     return fetch(`/api/signin`, { method: 'POST', body: JSON.stringify({ email, password }) })
       .then(async (response) => {
         if (!response.ok) {
@@ -36,7 +36,6 @@ export default class UserService implements IUserService {
           console.error('response.statusText:', response.statusText);
           throw new Error(response.statusText);
         }
-        return response.json();
       })
       .catch((error) => {
         throw error;

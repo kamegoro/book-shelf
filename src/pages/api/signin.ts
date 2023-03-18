@@ -6,6 +6,11 @@ import jwt from 'jsonwebtoken';
 
 import UserRepository from '@/core/domains/user/UserRepository';
 
+type RequestBody = {
+  email: string;
+  password: string;
+};
+
 type Response = {
   status: number;
   message: string;
@@ -15,10 +20,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const userRepository = new UserRepository();
 
   switch (req.method) {
-    case 'GET': {
-      const { email, password } = req.query;
+    case 'POST': {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      const body = JSON.parse(req.body) as RequestBody;
 
-      if (!email || Array.isArray(email) || !password || Array.isArray(password)) {
+      if (!body.email || !body.password) {
         res.status(400).json({
           status: 400,
           message: 'email and password must be present.',
@@ -27,23 +33,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       }
 
       userRepository
-        .getUserForEmail({ email })
+        .getUserForEmail({ email: body.email })
         .then((responseUser) => {
           if (!responseUser) {
-            return res.status(400).json({
+            res.status(400).json({
               status: 400,
               message: 'There is no user with this email address.',
             });
+            return;
           }
 
-          return bcrypt
-            .compare(password, responseUser.passwordHash)
+          bcrypt
+            .compare(body.password, responseUser.passwordHash)
             .then((responseBcrypt) => {
               if (!responseBcrypt) {
-                return res.status(403).json({
+                res.status(403).json({
                   status: 403,
                   message: 'There is no user with this email address.',
                 });
+                return;
               }
 
               const sessionExpiresIn = 7 * 24 * 60 * 60; // 7 days
@@ -58,10 +66,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               const { JWT_SECRET } = process.env;
 
               if (!JWT_SECRET) {
-                return res.status(500).json({
+                res.status(500).json({
                   status: 500,
                   message: 'JWT_SECRET is not set.',
                 });
+                return;
               }
 
               const token = jwt.sign(sessionInfo, JWT_SECRET);
@@ -75,7 +84,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 }),
               );
 
-              return res.end(res.getHeader('book_shelf_session'));
+              res.status(204).end(res.getHeader('book_shelf_session'));
             })
             .catch(() =>
               res.status(500).json({

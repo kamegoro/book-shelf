@@ -1,9 +1,11 @@
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
 import BookCard from '@/components/molecules/BookCard';
 import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 import Typography from '@/components/mui/Typography';
+import withAuth from '@/utils/withAuth';
 
 export default function Home() {
   const router = useRouter();
@@ -58,3 +60,7 @@ export default function Home() {
     </Box>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = withAuth(async () => ({
+  props: {},
+}));
