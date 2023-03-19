@@ -120,6 +120,7 @@ const SignUp = () => {
             <TextFieldWithIcon
               {...field}
               label="パスワード"
+              type="password"
               placeholder="パスワードを入力してください"
               disabled={isLoading}
               icon={<LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
