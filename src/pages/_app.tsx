@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 
 import Head from 'next/head';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 import { ThemeProvider } from '@mui/material';
 
@@ -19,7 +19,11 @@ Router.events.on('routeChangeStart', () => nProgress.start());
 Router.events.on('routeChangeError', () => nProgress.done());
 Router.events.on('routeChangeComplete', () => nProgress.done());
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+
+  const removeHeaderPath = ['/signup', '/signin', '/register', '/403', '/404', '500'] as const;
+
   return (
     <>
       <Head>
@@ -51,15 +55,21 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
         >
           <SnackbarProvider>
-            <Box>
-              <AppHeader />
-              <Box sx={{ pt: '56px' }}>
-                <Component {...pageProps} />
-              </Box>
-            </Box>
+            {removeHeaderPath.some((path) => path === router.pathname) ? (
+              <Component {...pageProps} />
+            ) : (
+              <>
+                <AppHeader />
+                <Box sx={{ pt: '56px' }}>
+                  <Component {...pageProps} />
+                </Box>
+              </>
+            )}
           </SnackbarProvider>
         </Box>
       </ThemeProvider>
     </>
   );
-}
+};
+
+export default App;

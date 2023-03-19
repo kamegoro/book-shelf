@@ -62,7 +62,7 @@ export const SnackbarProvider = ({ children }: { children: JSX.Element }) => {
         showSuccess,
       }}
     >
-      <Box sx={{ position: 'absolute', zIndex: 100, top: 10, right: 10 }}>
+      <Box sx={{ position: 'absolute', zIndex: 200, top: 10, right: 10 }}>
         {snackState.map((v) => (
           <Fragment key={v.id}>
             <Alert
