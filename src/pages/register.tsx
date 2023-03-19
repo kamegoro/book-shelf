@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import LockIcon from '@mui/icons-material/Lock';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-
 import PersonIcon from '@mui/icons-material/Person';
 
 import dayjs from 'dayjs';
@@ -156,9 +156,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
               type="password"
               errorMessage={errors.password ? errors.password.message : undefined}
               disabled={isLoading || !!errorMessage}
-              icon={
-                <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
-              }
+              icon={<LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
             />
           )}
         />
@@ -177,9 +175,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
               type="password"
               disabled={isLoading || !!errorMessage}
               errorMessage={errors.passwordConfirm ? errors.passwordConfirm.message : undefined}
-              icon={
-                <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
-              }
+              icon={<LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
             />
           )}
         />

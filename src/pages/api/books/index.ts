@@ -1,14 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import BookRepository from '@/core/domains/book/BookRepository';
-import { CreateBook } from '@/core/models/book';
+import { CreateBook, Book } from '@/core/models/book';
 import { ApiResponse } from '@/types';
+import getUserIdFromCookie from '@/utils/cookie';
 
 type RequestBody = CreateBook;
 
-type Response = { id: string } | null | ApiResponse | void;
+type Response = { id: string } | Book[] | null | ApiResponse | void;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
+  const userId = getUserIdFromCookie(req.headers.cookie);
+
+  if (!userId) {
+    res.status(401).json({
+      status: 401,
+      message: 'auth error',
+    });
+  }
+
+  const bookRepository = new BookRepository();
+
   switch (req.method) {
     case 'POST': {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -21,8 +33,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         });
       }
 
-      const bookRepository = new BookRepository();
-
       bookRepository
         .postBook({
           authorId: body.authorId,
@@ -33,6 +43,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           res.status(200).json({
             id: book.id,
           });
+        })
+        .catch(() => {
+          res.status(500).json({
+            status: 500,
+            message: 'An unexpected error has occurred.',
+          });
+        });
+
+      break;
+    }
+
+    case 'GET': {
+      bookRepository
+        .getBooks({ authorId: userId as string })
+        .then((books) => {
+          res.status(200).json(books);
         })
         .catch(() => {
           res.status(500).json({
