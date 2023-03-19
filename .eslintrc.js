@@ -55,6 +55,9 @@ module.exports = {
     // NOTE: Reactのpropsでデフォルト値必須を無効にする
     'react/require-default-props': 'off',
 
+    // NOTE: useEffectの第二引数の空を許容する
+    'react-hooks/exhaustive-deps': 'off',
+
     // NOTE: Reactのコンポーネント定義を関数式、アロー関数を許可する
     'react/function-component-definition': [
       'error',

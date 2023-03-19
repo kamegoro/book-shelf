@@ -6,7 +6,7 @@ import { Cookie } from '@/types';
 
 export interface IBookService {
   createBook: ({ title, description, image, authorId }: CreateBook) => Promise<Book>;
-  getBook: ({ id }: GetBook) => Promise<Book | null>;
+  getBook: ({ id }: GetBook & Cookie) => Promise<Book | null>;
   getBooks: ({ cookie }: Cookie) => Promise<Book[]>;
   deleteBook: ({ id }: DeleteBook) => Promise<void>;
 }
@@ -33,8 +33,13 @@ export default class BookService implements IBookService {
       });
   }
 
-  async getBook({ id }: GetBook): Promise<Book | null> {
-    return fetch(`${host}/api/books/${id}}`, { method: 'GET' })
+  async getBook({ id, cookie }: GetBook & Cookie): Promise<Book | null> {
+    return fetch(`${host}/api/books/${id}`, {
+      method: 'GET',
+      headers: {
+        cookie,
+      },
+    })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);
