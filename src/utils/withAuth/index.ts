@@ -15,7 +15,7 @@ const withAuth =
     } = ctx;
     const requestCookie = headers.cookie;
     if (!(requestCookie && cookies.parse(requestCookie))) {
-      res.setHeader('Location', '/login');
+      res.setHeader('Location', '/signin');
       res.statusCode = 307;
     }
 
