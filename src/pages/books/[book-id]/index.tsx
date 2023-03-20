@@ -22,7 +22,7 @@ const BookPage = ({ book }: PageProps) => {
   }, [book]);
 
   return (
-    <Box sx={{ width: 960, minHeight: 'calc(100vh - 56px)', py: 6 }}>
+    <Box sx={{ width: 960, py: 6 }}>
       <Typography
         component="h2"
         sx={{

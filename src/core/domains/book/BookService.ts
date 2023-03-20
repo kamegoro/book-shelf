@@ -75,6 +75,27 @@ export default class BookService implements IBookService {
       });
   }
 
+  async getGetBooksForDashBoard({ cookie }: Cookie): Promise<Book[]> {
+    return fetch(`${host}/api/books?limit=4`, {
+      method: 'GET',
+      headers: {
+        cookie,
+      },
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          console.error('response.ok:', response.ok);
+          console.error('response.status:', response.status);
+          console.error('response.statusText:', response.statusText);
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
+
   async deleteBook({ id }: DeleteBook): Promise<void> {
     return fetch(`${host}/api/books/${id}`, { method: 'DELETE' })
       .then(async (response) => {
