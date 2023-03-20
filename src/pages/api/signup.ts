@@ -57,6 +57,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       break;
     }
 
+    case 'GET': {
+      res.status(200).json({
+        status: 200,
+        message: 'success',
+      });
+
+      break;
+    }
+
     default:
       res.status(405).end();
       break;
