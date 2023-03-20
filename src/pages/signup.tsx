@@ -104,7 +104,9 @@ const SignUp = () => {
               label="ユーザー名"
               placeholder="ユーザー名を入力してください"
               disabled={isLoading}
-              icon={<PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+              icon={
+                <PersonIcon sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }} />
+              }
             />
           )}
         />
@@ -119,7 +121,9 @@ const SignUp = () => {
               type="email"
               disabled={isLoading}
               icon={
-                <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+                <MailOutlineIcon
+                  sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }}
+                />
               }
             />
           )}

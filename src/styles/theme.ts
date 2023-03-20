@@ -4,6 +4,8 @@ import {
   BrandColorOptions,
   GrayColors,
   GrayColorOptions,
+  IconColors,
+  IconColorOptions,
 } from '@mui/material/styles/createPalette';
 
 declare module '@mui/material/styles/createPalette' {
@@ -28,17 +30,27 @@ declare module '@mui/material/styles/createPalette' {
     text?: string;
     background?: string;
   }
+
+  interface IconColors {
+    blue: string;
+  }
+
+  interface IconColorOptions {
+    blue?: string;
+  }
 }
 
 declare module '@mui/material/styles' {
   interface Palette {
     brand: BrandColors;
     gray: GrayColors;
+    icon: IconColors;
   }
 
   interface PaletteOptions {
     brand: BrandColorOptions;
     gray: GrayColorOptions;
+    icon: IconColorOptions;
   }
 }
 
@@ -62,6 +74,9 @@ export default createTheme({
     gray: {
       text: '#262626',
       background: '#fafafa',
+    },
+    icon: {
+      blue: '#1565C0',
     },
   },
   breakpoints: {
