@@ -105,7 +105,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
     userService
       .signUpUser({ name, email, password: value.password })
       .then(async () => {
-        await router.push('/login');
+        await router.push('/signin');
         showSuccess('アカウントを作成しました。');
       })
       .catch(() => {
@@ -129,7 +129,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
           label="ユーザー名"
           value={name}
           disabled
-          icon={<PersonIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+          icon={<PersonIcon sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }} />}
         />
 
         <TextFieldWithIcon
@@ -138,7 +138,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
           value={email}
           disabled
           icon={
-            <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+            <MailOutlineIcon sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }} />
           }
         />
         <Controller
@@ -156,7 +156,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
               type="password"
               errorMessage={errors.password ? errors.password.message : undefined}
               disabled={isLoading || !!errorMessage}
-              icon={<LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+              icon={<LockIcon sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }} />}
             />
           )}
         />
@@ -175,7 +175,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
               type="password"
               disabled={isLoading || !!errorMessage}
               errorMessage={errors.passwordConfirm ? errors.passwordConfirm.message : undefined}
-              icon={<LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+              icon={<LockIcon sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }} />}
             />
           )}
         />
@@ -200,7 +200,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
             await router.push('/signup');
           }}
         >
-          <ArrowBackIcon sx={{ color: '#1565C0', height: 16, wight: 16, mr: 1 }} />
+          <ArrowBackIcon sx={{ color: 'icon.blue', height: 16, wight: 16, mr: 1 }} />
           サインアップ
         </Button>
         <Button
@@ -208,7 +208,7 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
           variant="text"
         >
           ログイン
-          <ArrowForwardIcon sx={{ color: '#1565C0', height: 16, wight: 16 }} />
+          <ArrowForwardIcon sx={{ color: 'icon.blue', height: 16, wight: 16 }} />
         </Button>
       </Box>
     </RegistrationFormBox>

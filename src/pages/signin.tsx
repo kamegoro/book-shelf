@@ -108,7 +108,9 @@ const SignUp = () => {
               type="email"
               disabled={isLoading}
               icon={
-                <MailOutlineIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />
+                <MailOutlineIcon
+                  sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }}
+                />
               }
             />
           )}
@@ -123,7 +125,7 @@ const SignUp = () => {
               type="password"
               placeholder="パスワードを入力してください"
               disabled={isLoading}
-              icon={<LockIcon sx={{ color: '#1565C0', height: 20, wight: 20, marginRight: 1 }} />}
+              icon={<LockIcon sx={{ color: 'icon.blue', height: 20, wight: 20, marginRight: 1 }} />}
             />
           )}
         />

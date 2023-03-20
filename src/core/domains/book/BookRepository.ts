@@ -12,7 +12,7 @@ export interface IBookRepository {
 
   getBook: ({ id }: Pick<Book, 'id'>) => Promise<Book | null>;
 
-  getBooks: ({ authorId }: Pick<Book, 'authorId'>) => Promise<Book[]>;
+  getBooks: ({ authorId, limit }: Pick<Book, 'authorId'> & { limit?: number }) => Promise<Book[]>;
 }
 
 export default class BookRepository implements IBookRepository {
@@ -60,9 +60,12 @@ export default class BookRepository implements IBookRepository {
       });
   }
 
-  async getBooks({ authorId }: Pick<Book, 'authorId'>): Promise<Book[]> {
+  async getBooks({
+    authorId,
+    limit,
+  }: Pick<Book, 'authorId'> & { limit?: number }): Promise<Book[]> {
     return prisma.book
-      .findMany({ where: { authorId } })
+      .findMany({ where: { authorId }, take: limit })
       .then((books) => books)
       .catch((error) => {
         throw error;

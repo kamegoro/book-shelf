@@ -55,17 +55,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
 
     case 'GET': {
-      bookRepository
-        .getBooks({ authorId: userId as string })
-        .then((books) => {
-          res.status(200).json(books);
-        })
-        .catch(() => {
-          res.status(500).json({
-            status: 500,
-            message: 'An unexpected error has occurred.',
+      const { limit } = req.query;
+
+      if (limit) {
+        bookRepository
+          .getBooks({ authorId: userId as string, limit: Number(limit) })
+          .then((books) => {
+            res.status(200).json(books);
+          })
+          .catch(() => {
+            res.status(500).json({
+              status: 500,
+              message: 'An unexpected error has occurred.',
+            });
           });
-        });
+      } else {
+        bookRepository
+          .getBooks({ authorId: userId as string })
+          .then((books) => {
+            res.status(200).json(books);
+          })
+          .catch(() => {
+            res.status(500).json({
+              status: 500,
+              message: 'An unexpected error has occurred.',
+            });
+          });
+      }
 
       break;
     }
