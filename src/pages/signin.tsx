@@ -2,6 +2,7 @@ import { memo, forwardRef, ReactNode, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LockIcon from '@mui/icons-material/Lock';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
@@ -10,6 +11,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSnackbar } from '@/components/contexts/SnackbarContext';
 import RegistrationFormBox from '@/components/molecules/RegistrationFormBox';
 
+import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 import Stack from '@/components/mui/Stack';
 import TextField, { TextFieldPropsType } from '@/components/mui/TextField';
@@ -142,6 +144,18 @@ const SignUp = () => {
           </Button>
         )}
       </Stack>
+      <Box sx={{ mt: 1.5, display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          sx={{ width: 'fit-content', fontSize: 12 }}
+          variant="text"
+          onClick={async () => {
+            await router.push('/signup');
+          }}
+        >
+          サインアップ
+          <ArrowForwardIcon sx={{ color: 'icon.blue', height: 16, wight: 16 }} />
+        </Button>
+      </Box>
     </RegistrationFormBox>
   );
 };
