@@ -1,22 +1,28 @@
 import Image from 'next/image';
 
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
+import { Theme, SxProps } from '@mui/material';
 
-import Box from '@/components/mui/Box';
+import Box, { BoxPropsType } from '@/components/mui/Box';
 import Typography from '@/components/mui/Typography';
 
-export type ImageUploadBoxPropsType = {
+export type ImageUploadBoxPropsType = Pick<BoxPropsType, 'sx'> & {
   src?: string;
 };
 
-const ImageUploadBox = ({ src }: ImageUploadBoxPropsType) => (
+const ImageUploadBox = ({ src, sx = undefined }: ImageUploadBoxPropsType) => (
   <Box
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      width: 200,
-      height: 200,
-    }}
+    sx={
+      [
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          width: 200,
+          height: 200,
+        },
+        ...(Array.isArray(sx) ? (sx as SxProps<Theme>[]) : ([sx] as SxProps<Theme>[])),
+      ] as SxProps<Theme>
+    }
   >
     <Box
       sx={(theme) => ({

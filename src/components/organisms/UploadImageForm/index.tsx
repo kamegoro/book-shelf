@@ -1,52 +1,140 @@
-import Image from 'next/image';
+import { PhotoCamera } from '@mui/icons-material';
+import { Theme, SxProps } from '@mui/material';
 
-import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
-import Box from '@/components/mui/Box';
-import Typography from '@/components/mui/Typography';
+import ImageUploadBox, { ImageUploadBoxPropsType } from '@/components/molecules/ImageUploadBox';
+import Box, { BoxPropsType } from '@/components/mui/Box';
+import Button from '@/components/mui/Button';
 
-export type ImageUploadFormPropsType = {
-  src?: string;
+import Stack from '@/components/mui/Stack';
+import TextField from '@/components/mui/TextField';
+
+type InputProps = {
+  title: string;
+  description: string;
 };
 
-const ImageUploadForm = ({ src }: ImageUploadFormPropsType) => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', pb: 2, width: 160 }}>
-    <Box
-      sx={(theme) => ({
-        mb: 1.5,
-        width: 200,
-        height: 200,
-        borderRadius: 4,
-        border: `3px ${theme.palette.brand.primary} ${src ? 'solid' : 'dotted'}`,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      })}
-    >
-      {src ? (
-        <Image
-          alt="本の画像"
-          src={src}
-          height={200}
-          width={200}
-          style={{ borderRadius: '8px' }}
-        />
-      ) : (
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <PhotoSizeSelectActualIcon sx={{ height: 40, width: 40, color: 'icon.blue', mb: 1 }} />
-          <Typography sx={{ color: 'gray.text', fontSize: 12, opacity: 0.6 }}>
-            画像をアップロードしてください
-          </Typography>
-        </Box>
-      )}
-    </Box>
-  </Box>
-);
+export type ImageUploadFormPropsType = Pick<BoxPropsType, 'sx'> & ImageUploadBoxPropsType;
 
-export default ImageUploadForm;
+const UploadImageForm = ({ src, sx = undefined }: ImageUploadFormPropsType) => {
+  const { control, handleSubmit } = useForm<InputProps>({
+    defaultValues: {
+      title: '',
+      description: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<InputProps> = (value) => {
+    console.log(value);
+  };
+
+  return (
+    <Box
+      sx={
+        [
+          { display: 'flex' },
+          ...(Array.isArray(sx) ? (sx as SxProps<Theme>[]) : ([sx] as SxProps<Theme>[])),
+        ] as SxProps<Theme>
+      }
+    >
+      <Box sx={{ mr: 8 }}>
+        <ImageUploadBox
+          src={src}
+          sx={{ mb: 2 }}
+        />
+        <Button
+          variant="contained"
+          sx={{ width: 200 }}
+        >
+          <PhotoCamera sx={{ height: 18, width: 18, mr: 1 }} />
+          アップロード
+          <input
+            hidden
+            accept="image/*"
+            type="file"
+          />
+        </Button>
+      </Box>
+      <Stack
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}
+      >
+        <Controller
+          name="title"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              label="タイトル"
+              required
+              placeholder="本のタイトルを入力してください"
+              value={field.value}
+              name={field.name}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              type="text"
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                sx: {
+                  fontSize: {
+                    xs: 10,
+                    sm: 14,
+                  },
+                },
+              }}
+              sx={{
+                mb: {
+                  xs: 2,
+                  sm: 3,
+                },
+              }}
+            />
+          )}
+        />
+        <Controller
+          name="description"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              label="詳細"
+              required
+              placeholder="本の詳細を入力してください"
+              value={field.value}
+              name={field.name}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              type="text"
+              multiline
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                rows: 4,
+                sx: {
+                  fontSize: {
+                    xs: 10,
+                    sm: 14,
+                  },
+                },
+              }}
+              sx={{
+                mb: {
+                  xs: 2,
+                  sm: 3,
+                },
+              }}
+            />
+          )}
+        />
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{ width: 200 }}
+        >
+          登録
+        </Button>
+      </Stack>
+    </Box>
+  );
+};
+
+export default UploadImageForm;
