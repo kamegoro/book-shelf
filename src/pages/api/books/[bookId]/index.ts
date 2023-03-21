@@ -5,12 +5,12 @@ import { Book } from '@/core/models/book';
 import { ApiResponse } from '@/types';
 import getUserIdFromCookie from '@/utils/cookie';
 
-type Response = Book | null | ApiResponse | void;
+type Response = Book | null | ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { bookId } = req.query;
   if (!bookId || Array.isArray(bookId)) {
-    res.status(400).json({
+    return res.status(400).json({
       status: 400,
       message: 'authorId and description and title must be present.',
     });
@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const userId = getUserIdFromCookie(req.headers.cookie);
 
   if (!userId) {
-    res.status(401).json({
+    return res.status(401).json({
       status: 401,
       message: 'auth error',
     });
@@ -29,17 +29,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   switch (req.method) {
     case 'GET': {
-      bookRepository
-        .getBook({ id: bookId as string })
+      return bookRepository
+        .getBook({ id: bookId })
         .then((book) => {
           if (!book) {
-            res.status(404).json({
+            return res.status(404).json({
               status: 404,
               message: 'Not founded.',
             });
-          } else {
-            res.status(200).json(book);
           }
+          return res.status(200).json(book);
         })
         .catch(() => {
           res.status(500).json({
@@ -52,8 +51,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
 
     case 'DELETE': {
-      bookRepository
-        .deleteBook({ id: bookId as string })
+      return bookRepository
+        .deleteBook({ id: bookId })
         .then(() => {
           res.status(201).json({
             status: 201,
@@ -66,12 +65,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             message: 'An unexpected error has occurred.',
           });
         });
-
-      break;
     }
 
     default:
-      res.status(405).end();
-      break;
+      return res.status(405).end();
   }
 }

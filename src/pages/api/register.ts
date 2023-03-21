@@ -27,13 +27,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
   switch (req.method) {
     case 'GET': {
       if (Array.isArray(token) || !token) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           message: 'The format of the token is incorrect.',
         });
       }
 
-      registerRepository
+      return registerRepository
         .getRegister({ token } as { token: string })
         .then((register) => {
           res.status(200).json(register);
@@ -44,7 +44,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
             message: 'failed',
           });
         });
-      break;
     }
 
     case 'POST': {
@@ -53,11 +52,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
 
       // 型エラーは無いがInterfaceで強制的に型を付与しているだけなので、バリデーションは必須
       if (!body.name || !body.name) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           message: 'email and password must be present.',
         });
-        return;
       }
 
       // TODO: 型バリデーション
@@ -69,11 +67,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
       const fromMail = process.env.FROM_MAIL;
 
       if (!fromMail) {
-        res.status(500).json({
+        return res.status(500).json({
           status: 500,
           message: 'from mail must be present',
         });
-        return;
       }
 
       const url =
@@ -82,7 +79,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
           : 'http://localhost:3000/';
       const newToken = crypto.randomUUID();
 
-      registerRepository
+      return registerRepository
         .postRegister({ ...requestBody, token: newToken })
         .then(async () => {
           await sendMail({
@@ -96,9 +93,7 @@ Book Shelfからのお知らせです。
 【Book Shelf登録ページ】
 ${url}/register?token=${newToken}
                       `,
-          }).then((v) => {
-            res.status(v[0].statusCode).json();
-          });
+          }).then((v) => res.status(v[0].statusCode).json());
         })
         .catch(() => {
           res.status(500).json({
@@ -113,14 +108,13 @@ ${url}/register?token=${newToken}
     case 'DELETE': {
       // 配列形式 or undefinedの場合は不正とみなす
       if (typeof token !== 'string' || !token) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           message: 'The format of the token is incorrect.',
         });
-        return;
       }
 
-      registerRepository
+      return registerRepository
         .deleteRegister({ token })
         .then(() => {
           res.status(200).json();
@@ -131,12 +125,9 @@ ${url}/register?token=${newToken}
             message: 'An unexpected error has occurred.',
           });
         });
-
-      break;
     }
 
     default:
-      res.status(405).end();
-      break;
+      return res.status(405).end();
   }
 }
