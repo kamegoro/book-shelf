@@ -59,7 +59,13 @@ const RegistrationFormBox = ({
         Book Shelf
       </Typography>
       <Typography
-        sx={{ mb: 1, fontSize: 14, textAlign: 'center', opacity: 0.4 }}
+        component="p"
+        sx={{
+          fontSize: 14,
+          mb: !errorMessage ? 4 : 0,
+          textAlign: 'center',
+          opacity: 0.4,
+        }}
         color="gray.text"
       >
         {description}

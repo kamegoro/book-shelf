@@ -1,5 +1,8 @@
 import { memo, forwardRef, ReactNode, useState } from 'react';
 
+import { useRouter } from 'next/router';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import PersonIcon from '@mui/icons-material/Person';
@@ -9,6 +12,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSnackbar } from '@/components/contexts/SnackbarContext';
 import RegistrationFormBox from '@/components/molecules/RegistrationFormBox';
 
+import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 import Stack from '@/components/mui/Stack';
 import TextField, { TextFieldPropsType } from '@/components/mui/TextField';
@@ -60,6 +64,7 @@ type InputProps = {
 };
 
 const SignUp = () => {
+  const router = useRouter();
   const { showError, showSuccess } = useSnackbar();
   const { control, handleSubmit, resetField } = useForm<InputProps>({
     defaultValues: {
@@ -141,6 +146,18 @@ const SignUp = () => {
           </Button>
         )}
       </Stack>
+      <Box sx={{ mt: 1.5, display: 'flex', justifyContent: 'flex-start' }}>
+        <Button
+          sx={{ width: 'fit-content', fontSize: 12 }}
+          variant="text"
+          onClick={async () => {
+            await router.push('/signin');
+          }}
+        >
+          <ArrowBackIcon sx={{ color: 'icon.blue', height: 16, wight: 16, mr: 1 }} />
+          ログイン
+        </Button>
+      </Box>
     </RegistrationFormBox>
   );
 };
