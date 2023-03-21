@@ -10,12 +10,17 @@ export type ImageUploadBoxPropsType = {
 };
 
 const ImageUploadBox = ({ src }: ImageUploadBoxPropsType) => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', pb: 2, width: 160 }}>
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      width: 200,
+      height: 200,
+    }}
+  >
     <Box
       sx={(theme) => ({
-        mb: 1.5,
-        width: 200,
-        height: 200,
+        height: '100%',
         borderRadius: 4,
         border: `4px ${theme.palette.brand.primary} ${src ? 'solid' : 'dotted'}`,
         display: 'flex',
@@ -37,10 +42,11 @@ const ImageUploadBox = ({ src }: ImageUploadBoxPropsType) => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            p: 2,
           }}
         >
           <PhotoSizeSelectActualIcon sx={{ height: 40, width: 40, color: 'icon.blue', mb: 1 }} />
-          <Typography sx={{ color: 'gray.text', fontSize: 12, opacity: 0.6 }}>
+          <Typography sx={{ color: 'gray.text', fontSize: 10, opacity: 0.6 }}>
             画像をアップロードしてください
           </Typography>
         </Box>
