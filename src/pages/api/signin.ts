@@ -5,16 +5,14 @@ import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 
 import UserRepository from '@/core/domains/user/UserRepository';
+import { ApiResponse } from '@/types';
 
 type RequestBody = {
   email: string;
   password: string;
 };
 
-type Response = {
-  status: number;
-  message: string;
-} | void;
+type Response = ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const userRepository = new UserRepository();

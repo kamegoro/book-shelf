@@ -4,6 +4,7 @@ import crypto from 'crypto';
 
 import RegisterRepository from '@/core/domains/register/RegisterRepository';
 import { Register } from '@/core/models/register';
+import { ApiResponse } from '@/types';
 import sendMail from '@/utils/sendgrid';
 
 type RequestBody = {
@@ -11,14 +12,7 @@ type RequestBody = {
   name: string;
 };
 
-type Response =
-  | Register
-  | null
-  | {
-      status: number;
-      message: string;
-    }
-  | void;
+type Response = Register | ApiResponse;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const registerRepository = new RegisterRepository();
@@ -36,7 +30,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
       return registerRepository
         .getRegister({ token } as { token: string })
         .then((register) => {
-          res.status(200).json(register);
+          if (!register) {
+            return res.status(404).json({
+              status: 400,
+              message: 'Not Founded',
+            });
+          }
+
+          return res.status(200).json(register);
         })
         .catch(() => {
           res.status(500).json({
@@ -93,7 +94,12 @@ Book Shelfからのお知らせです。
 【Book Shelf登録ページ】
 ${url}/register?token=${newToken}
                       `,
-          }).then((v) => res.status(v[0].statusCode).json());
+          }).then((v) =>
+            res.status(v[0].statusCode).json({
+              status: v[0].statusCode,
+              message: 'Success',
+            }),
+          );
         })
         .catch(() => {
           res.status(500).json({
@@ -117,7 +123,10 @@ ${url}/register?token=${newToken}
       return registerRepository
         .deleteRegister({ token })
         .then(() => {
-          res.status(200).json();
+          res.status(200).json({
+            status: 200,
+            message: 'Success',
+          });
         })
         .catch(() => {
           res.status(500).json({

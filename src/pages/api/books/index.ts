@@ -7,7 +7,7 @@ import getUserIdFromCookie from '@/utils/cookie';
 
 type RequestBody = CreateBook;
 
-type Response = { id: string } | Book[] | null | ApiResponse;
+type Response = { id: string } | Book[] | ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const userId = getUserIdFromCookie(req.headers.cookie);

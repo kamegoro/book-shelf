@@ -3,8 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcrypt';
 
 import UserRepository from '@/core/domains/user/UserRepository';
-
 import { User } from '@/core/models/user';
+import { ApiResponse } from '@/types';
 
 type RequestBody = {
   email: string;
@@ -12,14 +12,7 @@ type RequestBody = {
   password: string;
 };
 
-type Response =
-  | User
-  | null
-  | {
-      status: number;
-      message: string;
-    }
-  | void;
+type Response = User | ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   switch (req.method) {
@@ -44,7 +37,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const userRepository = new UserRepository();
       return userRepository
         .postUser(requestBody)
-        .then(() => res.status(201).send())
+        .then(() =>
+          res.status(201).json({
+            status: 201,
+            message: 'Success',
+          }),
+        )
         .catch(() =>
           res.status(500).json({
             status: 500,

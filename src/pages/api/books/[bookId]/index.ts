@@ -5,7 +5,7 @@ import { Book } from '@/core/models/book';
 import { ApiResponse } from '@/types';
 import getUserIdFromCookie from '@/utils/cookie';
 
-type Response = Book | null | ApiResponse;
+type Response = Book | ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { bookId } = req.query;
@@ -46,8 +46,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             message: 'An unexpected error has occurred.',
           });
         });
-
-      break;
     }
 
     case 'DELETE': {
