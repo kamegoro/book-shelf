@@ -38,7 +38,7 @@ const AppHeaderMenu = () => {
         showSuccess('ログアウトしました');
       })
       .catch(() => {
-        showError('ログアウトにしっぱいしました');
+        showError('ログアウトに失敗しました');
       })
       .finally(() => {
         handleClose();

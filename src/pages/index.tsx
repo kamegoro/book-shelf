@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { useSnackbar } from '@/components/contexts/SnackbarContext';
 import BookCard from '@/components/molecules/BookCard';
+import ImageUploadBox from '@/components/molecules/ImageUploadBox';
 import Box from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 import Typography from '@/components/mui/Typography';
@@ -39,6 +40,7 @@ const DashBoard = ({ books, error }: PageProps) => {
       >
         DashBoard
       </Typography>
+      <ImageUploadBox />
       <Box sx={{ backgroundColor: 'brand.white', p: 4, borderRadius: 3 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
           <Typography
