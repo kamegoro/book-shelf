@@ -7,13 +7,13 @@ import getUserIdFromCookie from '@/utils/cookie';
 
 type RequestBody = CreateBook;
 
-type Response = { id: string } | Book[] | null | ApiResponse | void;
+type Response = { id: string } | Book[] | ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const userId = getUserIdFromCookie(req.headers.cookie);
 
   if (!userId) {
-    res.status(401).json({
+    return res.status(401).json({
       status: 401,
       message: 'auth error',
     });
@@ -27,13 +27,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const body = JSON.parse(req.body) as RequestBody;
 
       if (!body.authorId || !body.description || !body.title) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           message: 'authorId and description and title must be present.',
         });
       }
 
-      bookRepository
+      return bookRepository
         .postBook({
           authorId: body.authorId,
           description: body.description,
@@ -50,28 +50,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             message: 'An unexpected error has occurred.',
           });
         });
-
-      break;
     }
 
     case 'GET': {
       const { limit } = req.query;
 
       if (limit) {
-        bookRepository
-          .getBooks({ authorId: userId as string, limit: Number(limit) })
-          .then((books) => {
-            res.status(200).json(books);
-          })
-          .catch(() => {
-            res.status(500).json({
-              status: 500,
-              message: 'An unexpected error has occurred.',
-            });
-          });
-      } else {
-        bookRepository
-          .getBooks({ authorId: userId as string })
+        return bookRepository
+          .getBooks({ authorId: userId, limit: Number(limit) })
           .then((books) => {
             res.status(200).json(books);
           })
@@ -82,12 +68,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             });
           });
       }
-
-      break;
+      return bookRepository
+        .getBooks({ authorId: userId })
+        .then((books) => {
+          res.status(200).json(books);
+        })
+        .catch(() => {
+          res.status(500).json({
+            status: 500,
+            message: 'An unexpected error has occurred.',
+          });
+        });
     }
 
     default:
-      res.status(405).end();
-      break;
+      return res.status(405).end();
   }
 }

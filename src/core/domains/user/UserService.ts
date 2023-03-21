@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable no-console */
-import { User, PostSignUp, GetUser, SignIn } from '@/core/models/user';
+import { User, PostSignUp, SignIn } from '@/core/models/user';
+import { Cookie } from '@/types';
 
 export interface IUserService {
   signUpUser: ({ name, email, password }: PostSignUp) => Promise<void>;
   signIn: ({ email, password }: SignIn) => Promise<void>;
   signOut: () => Promise<void>;
-  getUser: ({ id }: GetUser) => Promise<User>;
+  getUser: ({ cookie }: Cookie) => Promise<User>;
 }
+
+const host = process.env.HOST_NAME as string;
 
 export default class UserService implements IUserService {
   async signUpUser({ name, email, password }: PostSignUp): Promise<void> {
@@ -57,8 +60,13 @@ export default class UserService implements IUserService {
       });
   }
 
-  async getUser({ id }: GetUser): Promise<User> {
-    return fetch(`/api/users/${id}}`, { method: 'GET' })
+  async getUser({ cookie }: Cookie): Promise<User> {
+    return fetch(`${host}/api/settings`, {
+      method: 'GET',
+      headers: {
+        cookie,
+      },
+    })
       .then(async (response) => {
         if (!response.ok) {
           console.error('response.ok:', response.ok);

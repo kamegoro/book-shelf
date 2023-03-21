@@ -26,13 +26,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }),
       ]);
 
-      res.status(204).end(res.getHeader('book_shelf_session'));
-
-      break;
+      return res.status(204).end(res.getHeader('book_shelf_session'));
     }
 
     default:
-      res.status(405).end();
-      break;
+      return res.status(405).end();
   }
 }

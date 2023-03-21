@@ -5,16 +5,14 @@ import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 
 import UserRepository from '@/core/domains/user/UserRepository';
+import { ApiResponse } from '@/types';
 
 type RequestBody = {
   email: string;
   password: string;
 };
 
-type Response = {
-  status: number;
-  message: string;
-} | void;
+type Response = ApiResponse;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const userRepository = new UserRepository();
@@ -25,33 +23,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const body = JSON.parse(req.body) as RequestBody;
 
       if (!body.email || !body.password) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           message: 'email and password must be present.',
         });
-        return;
       }
 
-      userRepository
+      return userRepository
         .getUserForEmail({ email: body.email })
         .then((responseUser) => {
           if (!responseUser) {
-            res.status(400).json({
+            return res.status(400).json({
               status: 400,
               message: 'There is no user with this email address.',
             });
-            return;
           }
 
-          bcrypt
+          return bcrypt
             .compare(body.password, responseUser.passwordHash)
             .then((responseBcrypt) => {
               if (!responseBcrypt) {
-                res.status(403).json({
+                return res.status(403).json({
                   status: 403,
                   message: 'There is no user with this email address.',
                 });
-                return;
               }
 
               const sessionExpiresIn = 7 * 24 * 60 * 60; // 7 days
@@ -66,11 +61,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               const { JWT_SECRET } = process.env;
 
               if (!JWT_SECRET) {
-                res.status(500).json({
+                return res.status(500).json({
                   status: 500,
                   message: 'JWT_SECRET is not set.',
                 });
-                return;
               }
 
               const token = jwt.sign(sessionInfo, JWT_SECRET);
@@ -84,7 +78,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 }),
               );
 
-              res.status(204).end(res.getHeader('book_shelf_session'));
+              return res.status(204).end(res.getHeader('book_shelf_session'));
             })
             .catch(() =>
               res.status(500).json({
@@ -99,12 +93,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             message: 'Database communication failed',
           }),
         );
-
-      break;
     }
 
     default:
-      res.status(405).end();
-      break;
+      return res.status(405).end();
   }
 }
