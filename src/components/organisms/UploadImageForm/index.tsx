@@ -7,7 +7,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import { useSnackbar } from '@/components/contexts/SnackbarContext';
 
-import ImageUploadBox, { ImageUploadBoxPropsType } from '@/components/molecules/ImageUploadBox';
+import ImageUploadBox from '@/components/molecules/ImageUploadBox';
 import Box, { BoxPropsType } from '@/components/mui/Box';
 import Button from '@/components/mui/Button';
 import Fab from '@/components/mui/Fab';
@@ -23,7 +23,7 @@ type InputProps = {
   description: string;
 };
 
-export type ImageUploadFormPropsType = Pick<BoxPropsType, 'sx'> & ImageUploadBoxPropsType;
+export type ImageUploadFormPropsType = Pick<BoxPropsType, 'sx'>;
 
 const UploadImageForm = ({ sx = undefined }: ImageUploadFormPropsType) => {
   const [image, setImage] = useState<string | null>(null);
