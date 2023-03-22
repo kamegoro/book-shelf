@@ -8,6 +8,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LockIcon from '@mui/icons-material/Lock';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PersonIcon from '@mui/icons-material/Person';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import dayjs from 'dayjs';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
@@ -180,7 +181,9 @@ const Register = ({ name, email, errorMessage }: PageProps) => {
           )}
         />
         {isLoading ? (
-          <>Loading...</>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress size={32} />
+          </Box>
         ) : (
           <Button
             variant="contained"

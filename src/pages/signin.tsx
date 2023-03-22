@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LockIcon from '@mui/icons-material/Lock';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
@@ -132,7 +133,9 @@ const SignUp = () => {
           )}
         />
         {isLoading ? (
-          <>Loading...</>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress size={32} />
+          </Box>
         ) : (
           <Button
             variant="contained"
