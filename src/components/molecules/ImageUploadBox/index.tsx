@@ -7,7 +7,7 @@ import Box, { BoxPropsType } from '@/components/mui/Box';
 import Typography from '@/components/mui/Typography';
 
 export type ImageUploadBoxPropsType = Pick<BoxPropsType, 'sx'> & {
-  src?: string;
+  src: string | null;
 };
 
 const ImageUploadBox = ({ src, sx = undefined }: ImageUploadBoxPropsType) => (
@@ -26,9 +26,10 @@ const ImageUploadBox = ({ src, sx = undefined }: ImageUploadBoxPropsType) => (
   >
     <Box
       sx={(theme) => ({
-        height: '100%',
+        height: 200,
+        width: 200,
         borderRadius: 4,
-        border: `4px ${theme.palette.brand.primary} ${src ? 'solid' : 'dotted'}`,
+        border: !src ? `4px ${theme.palette.brand.primary} dotted` : undefined,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

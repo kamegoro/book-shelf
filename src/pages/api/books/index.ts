@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       const body = JSON.parse(req.body) as RequestBody;
 
-      if (!body.authorId || !body.description || !body.title) {
+      if (!body.description || !body.title) {
         return res.status(400).json({
           status: 400,
           message: 'authorId and description and title must be present.',
@@ -35,9 +35,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
       return bookRepository
         .postBook({
-          authorId: body.authorId,
+          authorId: userId,
           description: body.description,
           title: body.title,
+          image: body.image,
         })
         .then((book) => {
           res.status(200).json({

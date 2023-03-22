@@ -5,7 +5,7 @@ import { CreateBook, DeleteBook, GetBook, Book } from '@/core/models/book';
 import { Cookie } from '@/types';
 
 export interface IBookService {
-  createBook: ({ title, description, image, authorId }: CreateBook) => Promise<Book>;
+  createBook: ({ title, description, image }: CreateBook) => Promise<Book>;
   getBook: ({ id }: GetBook & Cookie) => Promise<Book | null>;
   getBooks: ({ cookie }: Cookie) => Promise<Book[]>;
   deleteBook: ({ id }: DeleteBook) => Promise<void>;
@@ -14,10 +14,11 @@ export interface IBookService {
 const host = process.env.HOST_NAME as string;
 
 export default class BookService implements IBookService {
-  async createBook({ title, description, image, authorId }: CreateBook): Promise<Book> {
-    return fetch(`${host}/api/books`, {
+  async createBook({ title, description, image }: CreateBook): Promise<Book> {
+    return fetch(`/api/books`, {
       method: 'POST',
-      body: JSON.stringify({ title, description, image, authorId }),
+      body: JSON.stringify({ title, description, image }),
+      credentials: 'include',
     })
       .then(async (response) => {
         if (!response.ok) {
