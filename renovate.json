@@ -1,6 +1,30 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
+  "description": "Renovateのドキュメント => https://docs.renovatebot.com ",
+  "extends": ["config:base"],
+  "baseBranches": ["main"],
+  "reviewers": ["kamegoro"],
+  "major": {
+    "stabilityDays": 7
+  },
+  "minor": {
+    "stabilityDays": 3
+  },
+  "patch": {
+    "stabilityDays": 2
+  },
+  "packageRules": [
+    {
+      "groupName": "patch",
+      "matchUpdateTypes": ["patch"],
+      "labels": ["patch"],
+      "automerge": true
+    },
+    {
+      "groupName": "non-major-updates",
+      "excludePackageNames": ["node", "typescript", "ts-node"],
+      "excludePackagePrefixes": ["next", "react", "@typescript-eslint/", "eslint", "stylelint"],
+      "updateTypes": ["minor", "patch"],
+      "labels": ["renovate", "update-minor"]
+    }
   ]
 }
