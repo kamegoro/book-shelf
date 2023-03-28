@@ -32,7 +32,7 @@ specifiers:
   eslint-plugin-import: 2.27.5
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-react: 7.32.2
-  eslint-plugin-react-hook-form: 0.2.5
+  eslint-plugin-react-hook-form: 0.3.0
   eslint-plugin-react-hooks: 4.6.0
   husky: 8.0.3
   jsonwebtoken: 9.0.0
@@ -88,7 +88,7 @@ devDependencies:
   eslint-plugin-import: 2.27.5_ufewo3pl5nnmz6lltvjrdi2hii
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.33.0
   eslint-plugin-react: 7.32.2_eslint@8.33.0
-  eslint-plugin-react-hook-form: 0.2.5
+  eslint-plugin-react-hook-form: 0.3.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.33.0
   husky: 8.0.3
   lint-staged: 13.1.2
@@ -2659,8 +2659,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-react-hook-form/0.2.5:
-    resolution: {integrity: sha512-ERTZG2q9hqu+bwiqA6bPPMIK2hREcOwxEgZzHFJlIR3RgwbYNxC1ekudUGvEoHtlnrWiDAJwA9OXMy3GZwVfRw==}
+  /eslint-plugin-react-hook-form/0.3.0:
+    resolution: {integrity: sha512-d9+XzjoQLQOWIpHgEOtSEs/PWcXnyP398vLAxD7mbKDQIRbP/G3mrotlDdTGG7i5HKDoiP/RWkP2I0TVp7nfLQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       requireindex: 1.1.0
