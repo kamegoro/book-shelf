@@ -19,7 +19,7 @@
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
     "@mui/icons-material": "5.11.11",
-    "@mui/material": "5.11.14",
+    "@mui/material": "5.11.15",
     "@next/font": "13.2.4",
     "@prisma/client": "4.11.0",
     "@sendgrid/mail": "7.7.0",
