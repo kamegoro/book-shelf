@@ -34,7 +34,7 @@
     "react-hook-form": "7.43.9"
   },
   "devDependencies": {
-    "@babel/core": "7.21.3",
+    "@babel/core": "7.21.4",
     "@faker-js/faker": "7.6.0",
     "@mermaid-js/mermaid-cli": "10.0.2",
     "@next/eslint-plugin-next": "13.2.4",
