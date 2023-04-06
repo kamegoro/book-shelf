@@ -3,7 +3,7 @@ name: 'Run CD'
 on:
   push:
     branches:
-      - main
+      - main-stop
 
 permissions:
   contents: 'read'
