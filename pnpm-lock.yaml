@@ -14,8 +14,8 @@ dependencies:
     specifier: 5.12.2
     version: 5.12.2(@emotion/react@11.10.8)(@emotion/styled@11.10.8)(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
   '@next/font':
-    specifier: 13.3.1
-    version: 13.3.1
+    specifier: 13.3.2
+    version: 13.3.2
   '@prisma/client':
     specifier: 4.13.0
     version: 4.13.0(prisma@4.13.0)
@@ -61,8 +61,8 @@ devDependencies:
     specifier: 10.1.0
     version: 10.1.0(typescript@5.0.4)
   '@next/eslint-plugin-next':
-    specifier: 13.3.1
-    version: 13.3.1
+    specifier: 13.3.2
+    version: 13.3.2
   '@prisma/generator-helper':
     specifier: 4.13.0
     version: 4.13.0
@@ -792,8 +792,14 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/font@13.3.1:
-    resolution: {integrity: sha512-S8Shizt4xlHDItXTAowEoyktiaLIEzTxJeXPaRu+VDeb21yXu7kMX2DUQE5Un+kb/ViCaAdWlyltCuS2sywEjA==}
+  /@next/eslint-plugin-next@13.3.2:
+    resolution: {integrity: sha512-YHugXBtXWVUjSMRirZPxDlDn3LvYpuCqaRlIHgKA52Q6PVtYtmFjhzYQ8LuN9mKCKF5NOZcrf3jya2uL8WQwuw==}
+    dependencies:
+      glob: 7.1.7
+    dev: true
+
+  /@next/font@13.3.2:
+    resolution: {integrity: sha512-gQICS3IZIbITqxqBVD0K8ng9ib0bxsOxVhTLeQyBlL773sNQoWIhJOyUHhYw1kSaOWP5BiFEmTvjNQNKwYuVKQ==}
     dev: false
 
   /@next/swc-darwin-arm64@13.3.1:
