@@ -5,8 +5,6 @@ import bcrypt from 'bcrypt';
 
 import prisma, { Prisma } from '../src/utils/prisma';
 
-faker.locale = 'ja';
-
 /*
   Databaseのリセット・シードデータの作成処理なので本番環境では実行しないでください。
 */
