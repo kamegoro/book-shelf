@@ -16,7 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@emotion/react": "11.11.0",
+    "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
     "@mui/icons-material": "5.11.16",
     "@mui/material": "5.13.4",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@babel/core": "7.22.1",
     "@faker-js/faker": "8.0.2",
-    "@mermaid-js/mermaid-cli": "10.1.0",
+    "@mermaid-js/mermaid-cli": "10.2.2",
     "@next/eslint-plugin-next": "13.4.4",
     "@prisma/generator-helper": "4.15.0",
     "@types/bcrypt": "5.0.0",
@@ -44,7 +44,7 @@
     "@types/jsonwebtoken": "9.0.2",
     "@types/node": "18.16.16",
     "@types/nprogress": "0.2.0",
-    "@types/react": "18.2.8",
+    "@types/react": "18.2.9",
     "@types/react-dom": "18.2.4",
     "@typescript-eslint/eslint-plugin": "5.59.9",
     "@typescript-eslint/parser": "5.59.9",
