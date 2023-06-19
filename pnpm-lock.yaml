@@ -45,7 +45,7 @@ specifiers:
   prisma-erd-generator: 1.7.0
   react: 18.2.0
   react-dom: 18.2.0
-  react-hook-form: 7.44.3
+  react-hook-form: 7.45.0
   ts-node: 10.9.1
   typescript: 5.0.4
 
@@ -65,7 +65,7 @@ dependencies:
   nprogress: 0.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-hook-form: 7.44.3_react@18.2.0
+  react-hook-form: 7.45.0_react@18.2.0
 
 devDependencies:
   '@babel/core': 7.22.5
@@ -3743,8 +3743,8 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-hook-form/7.44.3_react@18.2.0:
-    resolution: {integrity: sha512-/tHId6p2ViAka1wECMw8FEPn/oz/w226zehHrJyQ1oIzCBNMIJCaj6ZkQcv+MjDxYh9MWR7RQic7Qqwe4a5nkw==}
+  /react-hook-form/7.45.0_react@18.2.0:
+    resolution: {integrity: sha512-AbHeZ4ad+0dEIknSW9dBgIwcvRDfZ1O97sgj75WaMdOX0eg8TBiUf9wxzVkIjZbk76BBIE9lmFOzyD4PN80ZQg==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
