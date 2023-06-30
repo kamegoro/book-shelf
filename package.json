@@ -59,7 +59,7 @@
     "eslint-plugin-react-hook-form": "0.3.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "husky": "8.0.3",
-    "lint-staged": "13.2.2",
+    "lint-staged": "13.2.3",
     "prettier": "2.8.8",
     "prisma": "4.16.1",
     "prisma-erd-generator": "1.7.0",
