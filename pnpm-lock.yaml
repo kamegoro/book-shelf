@@ -16,7 +16,7 @@ specifiers:
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.1
   '@types/jsonwebtoken': 9.0.2
-  '@types/node': 18.16.18
+  '@types/node': 18.16.19
   '@types/nprogress': 0.2.0
   '@types/react': 18.2.14
   '@types/react-dom': 18.2.6
@@ -24,7 +24,7 @@ specifiers:
   '@typescript-eslint/parser': 5.60.1
   bcrypt: 5.1.0
   cookie: 0.5.0
-  dayjs: 1.11.8
+  dayjs: 1.11.9
   eslint: 8.43.0
   eslint-config-airbnb: 19.0.4
   eslint-config-airbnb-typescript: 17.0.0
@@ -59,7 +59,7 @@ dependencies:
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.0
   cookie: 0.5.0
-  dayjs: 1.11.8
+  dayjs: 1.11.9
   jsonwebtoken: 9.0.0
   next: 13.4.7_ob7c7ogpcitikph4afkm5ompve
   nprogress: 0.2.0
@@ -76,7 +76,7 @@ devDependencies:
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.1
   '@types/jsonwebtoken': 9.0.2
-  '@types/node': 18.16.18
+  '@types/node': 18.16.19
   '@types/nprogress': 0.2.0
   '@types/react': 18.2.14
   '@types/react-dom': 18.2.6
@@ -97,7 +97,7 @@ devDependencies:
   prettier: 2.8.8
   prisma: 4.16.2
   prisma-erd-generator: 1.7.0_66yuigtkd4pgrcmkfs7yo6mwby
-  ts-node: 10.9.1_jyxq5rouozouiavch4kcldvi3a
+  ts-node: 10.9.1_pqdfkuhuhnwv2d7uogwywwxtqq
   typescript: 5.1.6
 
 packages:
@@ -989,7 +989,7 @@ packages:
   /@types/bcrypt/5.0.0:
     resolution: {integrity: sha512-agtcFKaruL8TmcvqbndlqHPSJgsolhf/qPWchFlgnW1gECTN/nKbFcoFnvKAQRFfKbh+BO6A3SWdJu9t+xF3Lw==}
     dependencies:
-      '@types/node': 18.16.18
+      '@types/node': 18.16.19
     dev: true
 
   /@types/cookie/0.5.1:
@@ -999,7 +999,7 @@ packages:
   /@types/cross-spawn/6.0.2:
     resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
     dependencies:
-      '@types/node': 18.16.18
+      '@types/node': 18.16.19
     dev: true
 
   /@types/debug/4.1.8:
@@ -1019,15 +1019,15 @@ packages:
   /@types/jsonwebtoken/9.0.2:
     resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
     dependencies:
-      '@types/node': 18.16.18
+      '@types/node': 18.16.19
     dev: true
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node/18.16.18:
-    resolution: {integrity: sha512-/aNaQZD0+iSBAGnvvN2Cx92HqE5sZCPZtx2TsK+4nvV23fFe09jVDvpArXr2j9DnYlzuU9WuoykDDc6wqvpNcw==}
+  /@types/node/18.16.19:
+    resolution: {integrity: sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==}
     dev: true
 
   /@types/nprogress/0.2.0:
@@ -1077,7 +1077,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.16.18
+      '@types/node': 18.16.19
     dev: true
     optional: true
 
@@ -1705,8 +1705,8 @@ packages:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
 
-  /dayjs/1.11.8:
-    resolution: {integrity: sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==}
+  /dayjs/1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
     dev: false
 
   /debug/3.2.7:
@@ -4206,7 +4206,7 @@ packages:
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
-  /ts-node/10.9.1_jyxq5rouozouiavch4kcldvi3a:
+  /ts-node/10.9.1_pqdfkuhuhnwv2d7uogwywwxtqq:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4225,7 +4225,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.16.18
+      '@types/node': 18.16.19
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
