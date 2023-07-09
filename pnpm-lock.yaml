@@ -5,7 +5,7 @@ specifiers:
   '@emotion/react': 11.11.1
   '@emotion/styled': 11.11.0
   '@faker-js/faker': 8.0.2
-  '@mermaid-js/mermaid-cli': 10.2.2
+  '@mermaid-js/mermaid-cli': 10.2.4
   '@mui/icons-material': 5.13.7
   '@mui/material': 5.13.7
   '@next/eslint-plugin-next': 13.4.9
@@ -70,7 +70,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.22.8
   '@faker-js/faker': 8.0.2
-  '@mermaid-js/mermaid-cli': 10.2.2_typescript@5.1.6
+  '@mermaid-js/mermaid-cli': 10.2.4_typescript@5.1.6
   '@next/eslint-plugin-next': 13.4.9
   '@prisma/generator-helper': 4.16.2
   '@types/bcrypt': 5.0.0
@@ -96,7 +96,7 @@ devDependencies:
   lint-staged: 13.2.3
   prettier: 2.8.8
   prisma: 4.16.2
-  prisma-erd-generator: 1.7.0_66yuigtkd4pgrcmkfs7yo6mwby
+  prisma-erd-generator: 1.7.0_bli3vjcktsx6u2gv5fnjh2psqm
   ts-node: 10.9.1_pqdfkuhuhnwv2d7uogwywwxtqq
   typescript: 5.1.6
 
@@ -551,8 +551,8 @@ packages:
       - supports-color
     dev: false
 
-  /@mermaid-js/mermaid-cli/10.2.2_typescript@5.1.6:
-    resolution: {integrity: sha512-N1Ci6gFNl4RG7mxvLTBBcpDKtqOj3rpzKndTz7zj2NuVtiynz8z6QFndDBC/gYNCsAMfPpUqGTsH0YzqkxFGfQ==}
+  /@mermaid-js/mermaid-cli/10.2.4_typescript@5.1.6:
+    resolution: {integrity: sha512-5y2wPpLE8AJiCODVXmcccTAbSvkCQ1EtJJahQoGsbcyTTVMrr7C7sW8VUELHI4JjlekU5+czAyDH2+PJI0ZBkQ==}
     engines: {node: ^14.13 || >=16.0}
     hasBin: true
     dependencies:
@@ -3660,7 +3660,7 @@ packages:
     hasBin: true
     dev: true
 
-  /prisma-erd-generator/1.7.0_66yuigtkd4pgrcmkfs7yo6mwby:
+  /prisma-erd-generator/1.7.0_bli3vjcktsx6u2gv5fnjh2psqm:
     resolution: {integrity: sha512-YwFSMf83Cvly9QcWdEG+HYaCTBf9puV65QVVwXawqpS2KBi/xevUtTfwQ/KrbuCUPdypnwEu51aslfgZ4Sq88g==}
     engines: {node: '>=14'}
     hasBin: true
@@ -3669,7 +3669,7 @@ packages:
       '@prisma/client': ^4.0.0
       '@prisma/generator-helper': ^4.0.0
     dependencies:
-      '@mermaid-js/mermaid-cli': 10.2.2_typescript@5.1.6
+      '@mermaid-js/mermaid-cli': 10.2.4_typescript@5.1.6
       '@prisma/client': 4.16.2_prisma@4.16.2
       '@prisma/generator-helper': 4.16.2
       dotenv: 16.1.4
