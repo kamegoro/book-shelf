@@ -8,8 +8,8 @@ specifiers:
   '@mermaid-js/mermaid-cli': 10.2.4
   '@mui/icons-material': 5.14.1
   '@mui/material': 5.14.1
-  '@next/eslint-plugin-next': 13.4.10
-  '@next/font': 13.4.10
+  '@next/eslint-plugin-next': 13.4.11
+  '@next/font': 13.4.11
   '@prisma/client': 5.0.0
   '@prisma/generator-helper': 5.0.0
   '@sendgrid/mail': 7.7.0
@@ -54,7 +54,7 @@ dependencies:
   '@emotion/styled': 11.11.0_ihu55mvnfzooybzcklvkvwcuuy
   '@mui/icons-material': 5.14.1_5ssem5b26bxh6fty6wsmjwngae
   '@mui/material': 5.14.1_aq5jutf6cr66txe4mu4a5j4iuy
-  '@next/font': 13.4.10
+  '@next/font': 13.4.11
   '@prisma/client': 5.0.0_prisma@5.0.0
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.0
@@ -71,7 +71,7 @@ devDependencies:
   '@babel/core': 7.22.9
   '@faker-js/faker': 8.0.2
   '@mermaid-js/mermaid-cli': 10.2.4_typescript@5.1.6
-  '@next/eslint-plugin-next': 13.4.10
+  '@next/eslint-plugin-next': 13.4.11
   '@prisma/generator-helper': 5.0.0
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.1
@@ -751,8 +751,8 @@ packages:
     resolution: {integrity: sha512-twuSf1klb3k9wXI7IZhbZGtFCWvGD4wXTY2rmvzIgVhXhs7ISThrbNyutBx3jWIL8Y/Hk9+woytFz5QsgtcRKQ==}
     dev: false
 
-  /@next/eslint-plugin-next/13.4.10:
-    resolution: {integrity: sha512-YJqyq6vk39JQfvaNtN83t/p5Jy45+bazRL+V4QI8FPd3FBqFYMEsULiwRLgSJMgFqkk4t4JbeZurz+gILEAFpA==}
+  /@next/eslint-plugin-next/13.4.11:
+    resolution: {integrity: sha512-BsxI1DLtTZLX/MEoSg5Rilk2c6tlcjGseByxwasBPeoNH+fda/DZe8RkOmmmncNmTV/OzTBj/Pq6Pc3BqgLuBA==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -763,8 +763,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/font/13.4.10:
-    resolution: {integrity: sha512-BqV71ikHIFh+PZLpCR0nMZnlg/3Hcuw9qIUN42I4iCpneDHHiViUtanUeE113gy0Wm9oePTGX5OeKnPbSNnnHA==}
+  /@next/font/13.4.11:
+    resolution: {integrity: sha512-WvUnWOumUAIH1M/EboauoO53EwkXyDM3M5uLFaIsbYJBdBTQR5i4U+tdmxvgjb+TAnCF0s+cGzWPp9UwUCUkjQ==}
     dev: false
 
   /@next/swc-darwin-arm64/13.4.8:
