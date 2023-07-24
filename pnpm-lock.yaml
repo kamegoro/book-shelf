@@ -8,15 +8,15 @@ specifiers:
   '@mermaid-js/mermaid-cli': 10.2.4
   '@mui/icons-material': 5.14.1
   '@mui/material': 5.14.1
-  '@next/eslint-plugin-next': 13.4.11
-  '@next/font': 13.4.11
+  '@next/eslint-plugin-next': 13.4.12
+  '@next/font': 13.4.12
   '@prisma/client': 5.0.0
   '@prisma/generator-helper': 5.0.0
   '@sendgrid/mail': 7.7.0
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.1
   '@types/jsonwebtoken': 9.0.2
-  '@types/node': 18.16.19
+  '@types/node': 18.16.20
   '@types/nprogress': 0.2.0
   '@types/react': 18.2.15
   '@types/react-dom': 18.2.7
@@ -54,7 +54,7 @@ dependencies:
   '@emotion/styled': 11.11.0_ihu55mvnfzooybzcklvkvwcuuy
   '@mui/icons-material': 5.14.1_5ssem5b26bxh6fty6wsmjwngae
   '@mui/material': 5.14.1_aq5jutf6cr66txe4mu4a5j4iuy
-  '@next/font': 13.4.11
+  '@next/font': 13.4.12
   '@prisma/client': 5.0.0_prisma@5.0.0
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.0
@@ -71,12 +71,12 @@ devDependencies:
   '@babel/core': 7.22.9
   '@faker-js/faker': 8.0.2
   '@mermaid-js/mermaid-cli': 10.2.4_typescript@5.1.6
-  '@next/eslint-plugin-next': 13.4.11
+  '@next/eslint-plugin-next': 13.4.12
   '@prisma/generator-helper': 5.0.0
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.1
   '@types/jsonwebtoken': 9.0.2
-  '@types/node': 18.16.19
+  '@types/node': 18.16.20
   '@types/nprogress': 0.2.0
   '@types/react': 18.2.15
   '@types/react-dom': 18.2.7
@@ -97,7 +97,7 @@ devDependencies:
   prettier: 3.0.0
   prisma: 5.0.0
   prisma-erd-generator: 1.8.0_7yeibmbqond7d63wpxgqhbn3wi
-  ts-node: 10.9.1_pqdfkuhuhnwv2d7uogwywwxtqq
+  ts-node: 10.9.1_v6hdj4fik5ymva3m65dr2k75ym
   typescript: 5.1.6
 
 packages:
@@ -751,8 +751,8 @@ packages:
     resolution: {integrity: sha512-twuSf1klb3k9wXI7IZhbZGtFCWvGD4wXTY2rmvzIgVhXhs7ISThrbNyutBx3jWIL8Y/Hk9+woytFz5QsgtcRKQ==}
     dev: false
 
-  /@next/eslint-plugin-next/13.4.11:
-    resolution: {integrity: sha512-BsxI1DLtTZLX/MEoSg5Rilk2c6tlcjGseByxwasBPeoNH+fda/DZe8RkOmmmncNmTV/OzTBj/Pq6Pc3BqgLuBA==}
+  /@next/eslint-plugin-next/13.4.12:
+    resolution: {integrity: sha512-6rhK9CdxEgj/j1qvXIyLTWEaeFv7zOK8yJMulz3Owel0uek0U9MJCGzmKgYxM3aAUBo3gKeywCZKyQnJKto60A==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -763,8 +763,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/font/13.4.11:
-    resolution: {integrity: sha512-WvUnWOumUAIH1M/EboauoO53EwkXyDM3M5uLFaIsbYJBdBTQR5i4U+tdmxvgjb+TAnCF0s+cGzWPp9UwUCUkjQ==}
+  /@next/font/13.4.12:
+    resolution: {integrity: sha512-w/ygNFuscvvFKFTMoIqhU8Kaq1wM6x4XEu9bwzJaj8G7aloH866TUPeCgiKf+M/ACpMKfRahQa06REcg6T3CyA==}
     dev: false
 
   /@next/swc-darwin-arm64/13.4.8:
@@ -1026,7 +1026,7 @@ packages:
   /@types/bcrypt/5.0.0:
     resolution: {integrity: sha512-agtcFKaruL8TmcvqbndlqHPSJgsolhf/qPWchFlgnW1gECTN/nKbFcoFnvKAQRFfKbh+BO6A3SWdJu9t+xF3Lw==}
     dependencies:
-      '@types/node': 18.16.19
+      '@types/node': 18.16.20
     dev: true
 
   /@types/cookie/0.5.1:
@@ -1036,7 +1036,7 @@ packages:
   /@types/cross-spawn/6.0.2:
     resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
     dependencies:
-      '@types/node': 18.16.19
+      '@types/node': 18.16.20
     dev: true
 
   /@types/debug/4.1.8:
@@ -1056,15 +1056,15 @@ packages:
   /@types/jsonwebtoken/9.0.2:
     resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
     dependencies:
-      '@types/node': 18.16.19
+      '@types/node': 18.16.20
     dev: true
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node/18.16.19:
-    resolution: {integrity: sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==}
+  /@types/node/18.16.20:
+    resolution: {integrity: sha512-nL54VfDjThdP2UXJXZao5wp76CDiDw4zSRO8d4Tk7UgDqNKGKVEQB0/t3ti63NS+YNNkIQDvwEAF04BO+WYu7Q==}
     dev: true
 
   /@types/nprogress/0.2.0:
@@ -1114,7 +1114,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.16.19
+      '@types/node': 18.16.20
     dev: true
     optional: true
 
@@ -4324,7 +4324,7 @@ packages:
       typescript: 5.1.6
     dev: true
 
-  /ts-node/10.9.1_pqdfkuhuhnwv2d7uogwywwxtqq:
+  /ts-node/10.9.1_v6hdj4fik5ymva3m65dr2k75ym:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4343,7 +4343,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.16.19
+      '@types/node': 18.16.20
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
