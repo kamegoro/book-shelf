@@ -37,7 +37,7 @@ specifiers:
   eslint-plugin-react-hooks: 4.6.0
   husky: 8.0.3
   jsonwebtoken: 9.0.1
-  lint-staged: 13.3.0
+  lint-staged: 14.0.0
   next: 13.4.19
   nprogress: 0.2.0
   prettier: 3.0.2
@@ -93,7 +93,7 @@ devDependencies:
   eslint-plugin-react-hook-form: 0.3.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.47.0
   husky: 8.0.3
-  lint-staged: 13.3.0
+  lint-staged: 14.0.0
   prettier: 3.0.2
   prisma: 5.1.1
   prisma-erd-generator: 1.11.0_5teeztkdkmu6netxviczhnas3e
@@ -3227,8 +3227,8 @@ packages:
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /lint-staged/13.3.0:
-    resolution: {integrity: sha512-mPRtrYnipYYv1FEE134ufbWpeggNTo+O/UPzngoaKzbzHAthvR55am+8GfHTnqNRQVRRrYQLGW9ZyUoD7DsBHQ==}
+  /lint-staged/14.0.0:
+    resolution: {integrity: sha512-0tLf0pqZYkar/wu3nTctk4rVIG+d7PanDYv4/IQR4qwdqfQkTDziLRFnqMcLuLBTuUqmcLwsHPD2EjQ18d/oaA==}
     engines: {node: ^16.14.0 || >=18.0.0}
     hasBin: true
     dependencies:
