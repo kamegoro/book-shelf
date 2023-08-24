@@ -42,7 +42,7 @@ specifiers:
   nprogress: 0.2.0
   prettier: 3.0.2
   prisma: 5.1.1
-  prisma-erd-generator: 1.11.0
+  prisma-erd-generator: 1.11.1
   react: 18.2.0
   react-dom: 18.2.0
   react-hook-form: 7.45.4
@@ -96,7 +96,7 @@ devDependencies:
   lint-staged: 14.0.1
   prettier: 3.0.2
   prisma: 5.1.1
-  prisma-erd-generator: 1.11.0_5teeztkdkmu6netxviczhnas3e
+  prisma-erd-generator: 1.11.1_5teeztkdkmu6netxviczhnas3e
   ts-node: 10.9.1_i66k3arednklksy2ivodm65s6a
   typescript: 5.1.6
 
@@ -3718,8 +3718,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prisma-erd-generator/1.11.0_5teeztkdkmu6netxviczhnas3e:
-    resolution: {integrity: sha512-pH+l4f29KjDBlfXaIa5QsJibVm0CldCTHf84qhBwspwFITT6pfxMKACJyYY3LG9y95up5hQ9XSLs1e0zlRaEFw==}
+  /prisma-erd-generator/1.11.1_5teeztkdkmu6netxviczhnas3e:
+    resolution: {integrity: sha512-/NbHGnsn3emYaGJPRA/0MTzYa1RawRLKu0WOfp5pUugcyFNBwOLd38gQyhdlmkzbVSDSOp78ySNqYzt1Tq1QMQ==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
