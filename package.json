@@ -34,15 +34,15 @@
     "react-hook-form": "7.46.1"
   },
   "devDependencies": {
-    "@babel/core": "7.22.19",
+    "@babel/core": "7.22.20",
     "@faker-js/faker": "8.0.2",
     "@mermaid-js/mermaid-cli": "10.4.0",
     "@next/eslint-plugin-next": "13.4.19",
     "@prisma/generator-helper": "5.3.1",
     "@types/bcrypt": "5.0.0",
     "@types/cookie": "0.5.2",
-    "@types/jsonwebtoken": "9.0.2",
-    "@types/node": "18.17.16",
+    "@types/jsonwebtoken": "9.0.3",
+    "@types/node": "18.17.17",
     "@types/nprogress": "0.2.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
