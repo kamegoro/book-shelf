@@ -24,7 +24,7 @@ specifiers:
   '@typescript-eslint/parser': 6.7.2
   bcrypt: 5.1.1
   cookie: 0.5.0
-  dayjs: 1.11.9
+  dayjs: 1.11.10
   eslint: 8.49.0
   eslint-config-airbnb: 19.0.4
   eslint-config-airbnb-typescript: 17.1.0
@@ -59,7 +59,7 @@ dependencies:
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.1
   cookie: 0.5.0
-  dayjs: 1.11.9
+  dayjs: 1.11.10
   jsonwebtoken: 9.0.2
   next: 13.4.19_t2rxrtfgjpke3z36cnbxx6osqq
   nprogress: 0.2.0
@@ -1746,8 +1746,8 @@ packages:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
 
-  /dayjs/1.11.9:
-    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+  /dayjs/1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
 
   /debug/3.2.7:
