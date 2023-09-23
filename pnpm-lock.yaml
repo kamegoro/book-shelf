@@ -4,12 +4,12 @@ specifiers:
   '@babel/core': 7.22.20
   '@emotion/react': 11.11.1
   '@emotion/styled': 11.11.0
-  '@faker-js/faker': 8.0.2
+  '@faker-js/faker': 8.1.0
   '@mermaid-js/mermaid-cli': 10.4.0
   '@mui/icons-material': 5.14.9
   '@mui/material': 5.14.10
-  '@next/eslint-plugin-next': 13.5.0
-  '@next/font': 13.5.0
+  '@next/eslint-plugin-next': 13.5.2
+  '@next/font': 13.5.2
   '@prisma/client': 5.3.1
   '@prisma/generator-helper': 5.3.1
   '@sendgrid/mail': 7.7.0
@@ -54,7 +54,7 @@ dependencies:
   '@emotion/styled': 11.11.0_ul7oermmk4ntjo4qb2vh6lohna
   '@mui/icons-material': 5.14.9_4qj37r3fha7ycjcbo6vfp3itra
   '@mui/material': 5.14.10_z3lur6ypmh5qwbjfxgrqu4qyca
-  '@next/font': 13.5.0
+  '@next/font': 13.5.2
   '@prisma/client': 5.3.1_prisma@5.3.1
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.1
@@ -69,9 +69,9 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.22.20
-  '@faker-js/faker': 8.0.2
+  '@faker-js/faker': 8.1.0
   '@mermaid-js/mermaid-cli': 10.4.0_typescript@5.2.2
-  '@next/eslint-plugin-next': 13.5.0
+  '@next/eslint-plugin-next': 13.5.2
   '@prisma/generator-helper': 5.3.1
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.2
@@ -464,8 +464,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@faker-js/faker/8.0.2:
-    resolution: {integrity: sha512-Uo3pGspElQW91PCvKSIAXoEgAUlRnH29sX2/p89kg7sP1m2PzCufHINd0FhTXQf6DYGiUlVncdSPa2F9wxed2A==}
+  /@faker-js/faker/8.1.0:
+    resolution: {integrity: sha512-38DT60rumHfBYynif3lmtxMqMqmsOQIxQgEuPZxCk2yUYN0eqWpTACgxi0VpidvsJB8CRxCpvP7B3anK85FjtQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: true
 
@@ -773,20 +773,20 @@ packages:
     resolution: {integrity: sha512-CIMWiOTyflFn/GFx33iYXkgLSQsMQZV4jB91qaj/TfxGaGOXxn8C1j72TaUSPIyN7ziS/AYG46kGmnvuk1oOpg==}
     dev: false
 
-  /@next/eslint-plugin-next/13.5.0:
-    resolution: {integrity: sha512-ltYrYbBJ/akNOSX8VpdAyo5KfmsvlSWXqJRIOSrjBtlncgJtU+w2+pvEh5JpMcBYWhYXWJ9RmMK8iKocc5dSlg==}
-    dependencies:
-      glob: 7.1.7
-    dev: true
-
   /@next/eslint-plugin-next/13.5.1:
     resolution: {integrity: sha512-LBlI3iQvlzRE7Y6AfIyHKuM4T6REGmFgweN2tBqEUVEfgxERBLOutV2xckXEp3Y3VbfJBBXKZNfDzs20gHimSg==}
     dependencies:
       glob: 7.1.7
     dev: true
 
-  /@next/font/13.5.0:
-    resolution: {integrity: sha512-eZDM7sTjc77KJUYhwCbHhNVh9YyGJoidtVsCmCo0xrkrmifqyfh4kpLr2x4zrflBOMaC+2mqNNrj/+YV8pF6hQ==}
+  /@next/eslint-plugin-next/13.5.2:
+    resolution: {integrity: sha512-Ew8DOUerJYGRo8pI84SVwn9wxxx8sH92AanCXSkkLJM2W0RJEWy+BqWSCfrlA/3ZIczEl4l4o4lOeTGBPYfBJg==}
+    dependencies:
+      glob: 7.1.7
+    dev: true
+
+  /@next/font/13.5.2:
+    resolution: {integrity: sha512-c9EXqdXMEErMLrC71wZvpcOnNVkEEufZOO3EjgQJcKQUwPISvnkgIj9GKFIop0rX2dLNdzL3OC/4nrcAqWqUsg==}
     dev: false
 
   /@next/swc-darwin-arm64/13.5.1:
