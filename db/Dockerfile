@@ -1,2 +1,2 @@
-FROM postgres:15
+FROM postgres:16
 ENV LANG ja_JP.UTF-8
