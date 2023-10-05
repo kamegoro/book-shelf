@@ -8,15 +8,15 @@ specifiers:
   '@mermaid-js/mermaid-cli': 10.4.0
   '@mui/icons-material': 5.14.11
   '@mui/material': 5.14.11
-  '@next/eslint-plugin-next': 13.5.3
-  '@next/font': 13.5.3
+  '@next/eslint-plugin-next': 13.5.4
+  '@next/font': 13.5.4
   '@prisma/client': 5.3.1
   '@prisma/generator-helper': 5.3.1
   '@sendgrid/mail': 7.7.0
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.2
   '@types/jsonwebtoken': 9.0.3
-  '@types/node': 18.18.1
+  '@types/node': 18.18.3
   '@types/nprogress': 0.2.1
   '@types/react': 18.2.24
   '@types/react-dom': 18.2.8
@@ -54,7 +54,7 @@ dependencies:
   '@emotion/styled': 11.11.0_6xgwev5jq2jbqmhgrpcxyiti4q
   '@mui/icons-material': 5.14.11_hswnxfrvcrvro3yp4exvfkvbke
   '@mui/material': 5.14.11_4z6wtzdtg5bs27mf4eud4uxazi
-  '@next/font': 13.5.3
+  '@next/font': 13.5.4
   '@prisma/client': 5.3.1_prisma@5.3.1
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.1
@@ -71,12 +71,12 @@ devDependencies:
   '@babel/core': 7.23.0
   '@faker-js/faker': 8.1.0
   '@mermaid-js/mermaid-cli': 10.4.0_typescript@5.2.2
-  '@next/eslint-plugin-next': 13.5.3
+  '@next/eslint-plugin-next': 13.5.4
   '@prisma/generator-helper': 5.3.1
   '@types/bcrypt': 5.0.0
   '@types/cookie': 0.5.2
   '@types/jsonwebtoken': 9.0.3
-  '@types/node': 18.18.1
+  '@types/node': 18.18.3
   '@types/nprogress': 0.2.1
   '@types/react': 18.2.24
   '@types/react-dom': 18.2.8
@@ -97,7 +97,7 @@ devDependencies:
   prettier: 3.0.3
   prisma: 5.3.1
   prisma-erd-generator: 1.11.1_mgxf6yur5w2s2wzz4utj7lk7tq
-  ts-node: 10.9.1_oxdg7cju5us6ytz3fowqeo4lta
+  ts-node: 10.9.1_32vm5hrbqgromszj7lleontx7m
   typescript: 5.2.2
 
 packages:
@@ -772,8 +772,14 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/font/13.5.3:
-    resolution: {integrity: sha512-RniL8BuXLCtBU1chuJ/TPVT2vCA6+EdlOUEhCpMdSeInZ5/nuOShkHgLZ0QnFVbcozwK3shO5ZdqKBI5G3eMNg==}
+  /@next/eslint-plugin-next/13.5.4:
+    resolution: {integrity: sha512-vI94U+D7RNgX6XypSyjeFrOzxGlZyxOplU0dVE5norIfZGn/LDjJYPHdvdsR5vN1eRtl6PDAsOHmycFEOljK5A==}
+    dependencies:
+      glob: 7.1.7
+    dev: true
+
+  /@next/font/13.5.4:
+    resolution: {integrity: sha512-rOMki1/9BP9N93RZABiiF0EidMGgyCvNVSKvLLAnMkVh/IYk4Z827+NRuxCyRQCeT3vv/AeCiP5SFPAP10SPrQ==}
     dev: false
 
   /@next/swc-darwin-arm64/13.5.3:
@@ -1014,7 +1020,7 @@ packages:
   /@types/bcrypt/5.0.0:
     resolution: {integrity: sha512-agtcFKaruL8TmcvqbndlqHPSJgsolhf/qPWchFlgnW1gECTN/nKbFcoFnvKAQRFfKbh+BO6A3SWdJu9t+xF3Lw==}
     dependencies:
-      '@types/node': 18.18.1
+      '@types/node': 18.18.3
     dev: true
 
   /@types/cookie/0.5.2:
@@ -1024,7 +1030,7 @@ packages:
   /@types/cross-spawn/6.0.2:
     resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
     dependencies:
-      '@types/node': 18.18.1
+      '@types/node': 18.18.3
     dev: true
 
   /@types/debug/4.1.8:
@@ -1044,15 +1050,15 @@ packages:
   /@types/jsonwebtoken/9.0.3:
     resolution: {integrity: sha512-b0jGiOgHtZ2jqdPgPnP6WLCXZk1T8p06A/vPGzUvxpFGgKMbjXJDjC5m52ErqBnIuWZFgGoIJyRdeG5AyreJjA==}
     dependencies:
-      '@types/node': 18.18.1
+      '@types/node': 18.18.3
     dev: true
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node/18.18.1:
-    resolution: {integrity: sha512-3G42sxmm0fF2+Vtb9TJQpnjmP+uKlWvFa8KoEGquh4gqRmoUG/N0ufuhikw6HEsdG2G2oIKhog1GCTfz9v5NdQ==}
+  /@types/node/18.18.3:
+    resolution: {integrity: sha512-0OVfGupTl3NBFr8+iXpfZ8NR7jfFO+P1Q+IO/q0wbo02wYkP5gy36phojeYWpLQ6WAMjl+VfmqUk2YbUfp0irA==}
     dev: true
 
   /@types/nprogress/0.2.1:
@@ -1096,7 +1102,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.18.1
+      '@types/node': 18.18.3
     dev: true
     optional: true
 
@@ -4359,7 +4365,7 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /ts-node/10.9.1_oxdg7cju5us6ytz3fowqeo4lta:
+  /ts-node/10.9.1_32vm5hrbqgromszj7lleontx7m:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4378,7 +4384,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.18.1
+      '@types/node': 18.18.3
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
