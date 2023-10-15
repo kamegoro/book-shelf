@@ -5,7 +5,7 @@ specifiers:
   '@emotion/react': 11.11.1
   '@emotion/styled': 11.11.0
   '@faker-js/faker': 8.1.0
-  '@mermaid-js/mermaid-cli': 10.4.0
+  '@mermaid-js/mermaid-cli': 10.5.0
   '@mui/icons-material': 5.14.13
   '@mui/material': 5.14.13
   '@next/eslint-plugin-next': 13.5.4
@@ -70,7 +70,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.23.2
   '@faker-js/faker': 8.1.0
-  '@mermaid-js/mermaid-cli': 10.4.0_typescript@5.2.2
+  '@mermaid-js/mermaid-cli': 10.5.0_typescript@5.2.2
   '@next/eslint-plugin-next': 13.5.4
   '@prisma/generator-helper': 5.4.2
   '@types/bcrypt': 5.0.0
@@ -568,8 +568,8 @@ packages:
       - supports-color
     dev: false
 
-  /@mermaid-js/mermaid-cli/10.4.0_typescript@5.2.2:
-    resolution: {integrity: sha512-sXohfGD6xgR8VEKvLdvSCndFaFNVTlyXjgZlJ3x8U3/J0V2VTfLIZO94Gt8KUPUccFWci8dRYDGG0fQerB+aIA==}
+  /@mermaid-js/mermaid-cli/10.5.0_typescript@5.2.2:
+    resolution: {integrity: sha512-sZ8ec+zK0tBpyyIZ1QbWsvlecIMxHL9MQAxJCwxmp5nB3PN9m4uFeVpAV86Eec0Ivuu3kiyijNkK2zdZnWXXFA==}
     engines: {node: ^14.13 || >=16.0}
     hasBin: true
     dependencies:
@@ -3778,7 +3778,7 @@ packages:
     peerDependencies:
       '@prisma/client': ^4.0.0 || ^5.0.0
     dependencies:
-      '@mermaid-js/mermaid-cli': 10.4.0_typescript@5.2.2
+      '@mermaid-js/mermaid-cli': 10.5.0_typescript@5.2.2
       '@prisma/client': 5.4.2_prisma@5.4.2
       '@prisma/generator-helper': 5.4.2
       dotenv: 16.3.1
