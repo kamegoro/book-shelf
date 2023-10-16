@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': 7.23.2
   '@emotion/react': 11.11.1
   '@emotion/styled': 11.11.0
-  '@faker-js/faker': 8.1.0
+  '@faker-js/faker': 8.2.0
   '@mermaid-js/mermaid-cli': 10.5.0
   '@mui/icons-material': 5.14.13
   '@mui/material': 5.14.13
@@ -69,7 +69,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.23.2
-  '@faker-js/faker': 8.1.0
+  '@faker-js/faker': 8.2.0
   '@mermaid-js/mermaid-cli': 10.5.0_typescript@5.2.2
   '@next/eslint-plugin-next': 13.5.4
   '@prisma/generator-helper': 5.4.2
@@ -457,8 +457,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@faker-js/faker/8.1.0:
-    resolution: {integrity: sha512-38DT60rumHfBYynif3lmtxMqMqmsOQIxQgEuPZxCk2yUYN0eqWpTACgxi0VpidvsJB8CRxCpvP7B3anK85FjtQ==}
+  /@faker-js/faker/8.2.0:
+    resolution: {integrity: sha512-VacmzZqVxdWdf9y64lDOMZNDMM/FQdtM9IsaOPKOm2suYwEatb8VkdHqOzXcDnZbk7YDE2BmsJmy/2Hmkn563g==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: true
 
