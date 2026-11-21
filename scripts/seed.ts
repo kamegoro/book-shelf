@@ -14,7 +14,7 @@ const createUser = async () => {
     Array(10)
       .fill(0)
       .map(async () => ({
-        name: faker.name.fullName(),
+        name: faker.person.fullName(),
         passwordHash: await bcrypt.hash('12345678', 10),
         email: faker.internet.email(),
       })),
@@ -29,9 +29,9 @@ const createRegister = async () => {
   const registers: Prisma.RegisterCreateInput[] = Array(10)
     .fill(0)
     .map(() => ({
-      name: faker.name.firstName(),
+      name: faker.person.firstName(),
       email: faker.internet.email(),
-      token: faker.datatype.uuid(),
+      token: faker.string.uuid(),
     }));
 
   await prisma.register.createMany({
