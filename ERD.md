@@ -1,31 +1,31 @@
 ```mermaid
 erDiagram
 
-  User {
-    String id PK
-    String name
-    String email
-    String passwordHash
-    String avatar  "nullable"
+  "User" {
+    String id "🗝️"
+    String name 
+    String email 
+    String passwordHash 
+    String avatar "❓"
     }
+  
 
-
-  Register {
-    String id PK
-    DateTime createdAt
-    String token
-    String name
-    String email
+  "Register" {
+    String id "🗝️"
+    DateTime createdAt 
+    String token 
+    String name 
+    String email 
     }
+  
 
-
-  Book {
-    String id PK
-    DateTime createdAt
-    String title
-    String description
-    String image  "nullable"
+  "Book" {
+    String id "🗝️"
+    DateTime createdAt 
+    String title 
+    String description 
+    String image "❓"
     }
-
-    Book o{--|| User : "author"
+  
+    "Book" }o--|| "User" : "author"
 ```
